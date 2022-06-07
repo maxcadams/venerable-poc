@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "date": "2022-03-01" , 
+        "description": "tickets purchase",
+        "type": "tickets",
+        "debit": 15.95
+    }, 
+    {
+        "id": 2,
+        "date": "2022-03-01" , 
+        "description": "drink purchase",
+        "type": "concessions",
+        "debit": 4.99
+    },
+    {
+        "id": 3,
+        "date": "2022-03-01",
+        "description": "player wages",
+        "type": "PWages",
+        "credit": 1000.0
+    }
+]
