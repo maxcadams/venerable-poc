@@ -2,8 +2,10 @@ import json
 import os
 from typing import List
 from unicodedata import decimal
+from decimal import Decimal
 import decimalencoder
 import boto3
+import pprint
 
 
 dynamodb = boto3.resource('dynamodb')
@@ -14,11 +16,11 @@ def create_domain_entry():
         'name': 'English Premier League', 
         'club': {}
     }
-    club = domain['League']['club'] = {
+    club = domain['league']['club'] = {
         'name': 'Arsenal FC',
-        'City': 'London',
-        'Owner': 'E. Stanley Kroenke',
-        'Matches': []
+        'city': 'London',
+        'owner': 'E. Stanley Kroenke',
+        'matches': []
     }
     return domain
 
@@ -31,30 +33,30 @@ def create_match_entry(HomeTeam, VisitingTeam, ScoreHomeTeam, ScoreVisitingTeam,
         'ScoreVisitingTeam': ScoreVisitingTeam,
         'DateOfMatch': DateOfMatch,
         'MatchLocation': MatchLocation,
-        'Revenue': {},
-        'Expenses': {}
+        'Revenue': Decimal(0), #for sake of simplicity, gonna have just a number entry for both
+        'Expenses': Decimal(0)
         }
     return match
 
-def create_revenue_match(TicketType, TicketSales, ConcessionType, ConcessionSales):
-    revenue = {
-        'Ticket':{
-            'TicketType': TicketType,
-            'TicketSales': TicketSales
-        },
-        'Concessions': {
-            'ConcessionType': ConcessionType,
-            'ConcessionSales': ConcessionSales
-        }
-    }
-    return revenue
+# def create_revenue_match(TicketType, TicketSales, ConcessionType, ConcessionSales):
+#     revenue = {
+#         'Ticket':{
+#             'TicketType': TicketType,
+#             'TicketSales': TicketSales
+#         },
+#         'Concessions': {
+#             'ConcessionType': ConcessionType,
+#             'ConcessionSales': ConcessionSales
+#         }
+#     }
+#     return revenue
 
-def create_expenses_match(PlayerWages):
-    expenses = {
-        'PlayerSalary': PlayerWages
-    }
+# def create_expenses_match(PlayerWages):
+#     expenses = {
+#         'PlayerSalary': PlayerWages
+#     }
     
-    return expenses
+#     return expenses
 
 
 def adapt_helper(transactions: list, matches : list) -> dict:
@@ -78,26 +80,26 @@ def adapt_helper(transactions: list, matches : list) -> dict:
 
         # now go through each transaction that correspond to that match (date)
         # below, transactions_list filtered 
-        transactions_list = list(filter(lambda trans: trans['date'] == date), transactions)
+        transactions_list = list(filter(lambda trans: trans['date'] == date, transactions))
         
-        total_ticket_sales = 0
-        total_concession_sales = 0
-        total_player_wages = 0
-
+        total_revenue = Decimal(0)
+        total_expenses = Decimal(0)
 
         for transaction in transactions_list:
-            if transaction.has_key('credit'):
-                if transaction['type'] == 'Pwages':
-                    total_player_wages+=transaction['credit']
+            if 'credit' in transaction:
+                total_expenses += Decimal(transaction['credit'])
             
-            if transaction.has_key('debit'):
-                
-
-
+            if 'debit' in transaction:
+                total_revenue += Decimal(transaction['debit'])
         
-                        
-            
+        #Edit revenue and expenses field and append
+        match['Revenue'] = total_revenue
+        match['Expenses'] = total_expenses
+        match_list.append(match)        
     
+    return domain
+    
+
 
 
 
@@ -113,12 +115,10 @@ def adapt(event, context):
     transactions = transactions_scan['Items'] #type list (of dicts)
     matches = matches_scan['Items']
 
+    domain_formatted = adapt_helper(transactions, matches)
     response = {
         "statusCode": 200,
-        "body": f"""{{
-            "transactions":{json.dumps(transactions, cls=decimalencoder.DecimalEncoder)},
-            "matches":{json.dumps(matches, cls=decimalencoder.DecimalEncoder)},
-            }}"""
+        "body": f"{json.dumps(domain_formatted, cls=decimalencoder.DecimalEncoder)}"
     }
 
     return response
@@ -131,3 +131,14 @@ def adapt(event, context):
         "event": event
     }
     """
+
+
+if __name__ == '__main__':
+    with open('transactions.json') as t_file:
+        transactions = json.load(t_file, parse_float=Decimal)
+    
+    with open('matches.json') as m_file:
+        matches = json.load(m_file, parse_float=Decimal)
+    
+    
+    pprint.pprint(adapt_helper(transactions, matches))
