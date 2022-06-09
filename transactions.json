@@ -2,7 +2,7 @@
     {
         "id": 1,
         "date": "2022-03-01" , 
-        "description": "tickets purchase",
+        "description": "VIP tickets purchase",
         "type": "tickets",
         "debit": 15.95
     }, 
@@ -19,5 +19,19 @@
         "description": "player wages",
         "type": "PWages",
         "credit": 1000.0
+    },
+    {
+        "id": 4,
+        "date": "2022-03-08",
+        "description": "player wages",
+        "type": "PWages",
+        "credit": 1000.0
+    },
+    {
+        "id": 1,
+        "date": "2022-03-01" , 
+        "description": "VIP tickets purchase",
+        "type": "tickets",
+        "debit": 15.95
     }
 ]
