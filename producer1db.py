@@ -53,7 +53,7 @@ class Club:
                         {'AttributeName': 'date', 'KeyType': 'RANGE'}  # Sort key
                     ],
                     AttributeDefinitions=[
-                        {'AttributeName': 'id', 'AttributeType': 'N'},
+                        {'AttributeName': 'id', 'AttributeType': 'N'}, 
                         {'AttributeName': 'date', 'AttributeType': 'S'}
                     ],
                     ProvisionedThroughput={'ReadCapacityUnits': 20, 'WriteCapacityUnits': 20})
@@ -161,7 +161,7 @@ class Club:
             with open(file_name) as file:
                 matches_data = json.load(file, parse_float=Decimal)
         except FileNotFoundError:
-            logger.error(f"File {filename} not found.")
+            logger.error(f"File {file_name} not found.")
             raise
         
         return matches_data
@@ -192,10 +192,12 @@ class Club:
 
 
     def scan_transactions(self):
-        return self.table1.scan()
+        scan_resp = self.table1.scan()
+        return scan_resp['Items']
     
     def scan_matches(self):
-        return self.table2.scan()
+        scan_resp = self.table2.scan()
+        return scan_resp['Items']
 
     def delete_tables(self):
         """
@@ -215,9 +217,7 @@ class Club:
 def run_scenario(dynamodb):
     Arsenal = Club(dyn, club_name="Arsenal", league="English Premier League")
     Arsenal.create_table("transactions")
-    print(Arsenal.table1)
     Arsenal.create_table("matches")
-    print(Arsenal.table2)
     Arsenal.add_transaction_data('transactions.json')
     Arsenal.add_match_data('matches.json')
 
@@ -229,9 +229,6 @@ def run_scenario(dynamodb):
         elif msg == 'scan':
             print(Arsenal.scan_matches())
             print(Arsenal.scan_transactions())
-
-
-    
 
 
 

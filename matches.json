@@ -12,7 +12,7 @@
         "Home": "Tottenham",
         "Away": "Arsenal",
         "Stadium": "Tottenham Hotspur Stadium",
-        "HomeGoals": "0",
-        "AwayGoals": "3"
+        "HomeGoals": 0,
+        "AwayGoals": 3
     }
 ]
