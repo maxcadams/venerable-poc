@@ -118,6 +118,10 @@ def adapt(event, context):
     domain_formatted = adapt_helper(transactions, matches)
     response = {
         "statusCode": 200,
+        "headers": {
+            "Access-Control-Allow-Origin": "*",
+            'Access-Control-Allow-Credentials': True
+        },
         "body": f"{json.dumps(domain_formatted, cls=decimalencoder.DecimalEncoder)}"
     }
 
