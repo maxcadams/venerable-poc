@@ -123,7 +123,7 @@ h1{
 
 <h1> Webapp </h1>
 
-<button class="button" id="btn">Click me for data</button>  
+<button class="button" id="btn">Click me for data</button>
 
 
 <!--
@@ -160,7 +160,7 @@ h1{
 
             let match = document.createElement('div');
             match.setAttribute('class', 'match');
-            
+
             let match_date = document.createElement("div");
             match_date.setAttribute('class', 'match-date');
             match_date.innerHTML = 'Date: '.concat(matches[i]['date']);
@@ -180,8 +180,8 @@ h1{
             match_section.appendChild(match)
 
 
-            // or 
-            /* 
+            // or
+            /*
             $('body')
             .append(JSON.stringify(matches[i]))
             //.addClass('match-container')
@@ -191,15 +191,15 @@ h1{
     }
 
     function accessapi() {
-        fetch('https://vdjcm6n5b4.execute-api.us-east-1.amazonaws.com/dev/all')
+        fetch('https://98ljeyxds2.execute-api.us-east-1.amazonaws.com/dev/orch')
           .then(response => response.json())
           .then(data => print_data(data))
           .catch(error => console.log(error))
     }
-    
-    
-    
-    
+
+
+
+
     $("#btn").click ( function () {
         let respContainer = document.getElementsByClassName('match-section');
         //console.log(respContainer);

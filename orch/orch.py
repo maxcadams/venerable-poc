@@ -1,17 +1,25 @@
+from email.quoprimime import body_check
 import json
-import requests
+import urllib3
+import decimalencoder
 
-url = ''
+url = 'https://7pl2f71oh7.execute-api.us-east-1.amazonaws.com/dev/all'
 
 def orch(event, context):
-    
-    get_resp = requests.get(url)
 
-    body = get_resp.json()
+    http = urllib3.PoolManager()
+    res = http.request('GET', url)
+
+
+    body = res.data.decode('utf-8')
 
     response = {
         "statusCode": 200,
-        "body": json.dumps(body, )
+        "headers": {
+            "Access-Control-Allow-Origin": "*",
+            'Access-Control-Allow-Credentials': True
+        },
+        "body": body
     }
 
     return response

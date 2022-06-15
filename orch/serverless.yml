@@ -13,8 +13,7 @@
 
 service: orch
 # app and org for use with dashboard.serverless.com
-#app: your-app-name
-#org: your-org-name
+app: orch
 org: madams
 
 
@@ -63,7 +62,7 @@ provider:
 #    - include-me-dir/**
 
 functions:
-  hello:
+  orch:
     handler: orch.orch
     events:
       -  http: 
