@@ -1,15 +1,12 @@
-from email.quoprimime import body_check
-import json
 import urllib3
-import decimalencoder
 
-url = 'https://7pl2f71oh7.execute-api.us-east-1.amazonaws.com/dev/all'
+url = 'https://pyasz7b5kl.execute-api.us-east-1.amazonaws.com/dev/all'
+# turn into a list when we have multiple urls
 
 def orch(event, context):
 
     http = urllib3.PoolManager()
     res = http.request('GET', url)
-
 
     body = res.data.decode('utf-8')
 
@@ -24,11 +21,6 @@ def orch(event, context):
 
     return response
 
-    # Use this code if you don't use the http event with the LAMBDA-PROXY
-    # integration
-    """
-    return {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
-        "event": event
-    }
-    """
+
+# note: with multiple adapter outputs, want to put together the sections, not have 
+# a list of json bodies (kinda like stack each section)
