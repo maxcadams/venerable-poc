@@ -1,12 +1,7 @@
 from asyncio.base_futures import _FINISHED
 from decimal import Decimal
-from io import BytesIO
 import json
 import logging
-import os
-from pprint import pprint
-import requests
-from zipfile import ZipFile
 import boto3
 from boto3.dynamodb.conditions import Key
 from botocore.exceptions import ClientError

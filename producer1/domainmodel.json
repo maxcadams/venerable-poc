@@ -1,0 +1,86 @@
+{
+    "Transactions" : {
+        "SchemaVersion": "v1.0",
+        "PaymentInstructions": 
+        [
+            { 
+            "PaymentInstruction": {
+                "ContextSource" : 
+                {
+                    "Source": null, 
+                    "TriggeringPaymentEventLocation": null,
+                    "TriggeringPaymentEvent": null,
+                    "TriggeringPaymentEventID": null,
+                    "TriggeringPaymentEventDatetime": null,
+                    "TriggeringPaymentEventBatchCycleId": null,
+                    "TriggeringPaymentEventBatchCycleDatetime": null 
+                },
+                "VenerableLedgerProcessing" : 
+                {
+                    "PaymentCompanyParty": 
+                    {
+                        "PartyId": null,
+                        "PartyName": null
+                    },
+                    "PaymentCompanyGeneralLedgerAccount":
+                    {
+                        "AccountId": null, 
+                        "AccountAliasSet": null,
+                        "AccountAlias": null
+                    },
+                    "PaymentCompanyCostCenter": null,
+                    "IntendedGeneralLedgerPostingDate": null
+                },
+                "PaymentInfo":
+                {
+                    "PaymentIssuerBankParty": 
+                    {
+                        "PartyId": null,
+                        "FullName": null,
+                        "ABARoutingNumber": null
+                    },
+                    "PaymentIssuerBankAccount":
+                    {
+                        "AccountId" : null,
+                        "AccountName" : null,
+                        "AccountAliasSet" : null,
+                        "AccountAlias" : null
+                    },
+                    "IntendedPaymentIssuerBankPostingDate": null,
+                    "PaymentTransactionId": null,
+                    "Payment": 
+                    {
+                        "PaymentMechanism": null,
+                        "CurrencyInstrument":
+                        {
+                            "InstrumentId": null, 
+                            "SymbolFamily": null,
+                            "Symbol": null
+                        },
+                        "CurrencyAmount": null
+                    }
+                },
+                "PayeeDetails":
+                {
+                    "AnnuityPolicyId": null, 
+                    "PayeePolicyRole": null,
+                    "PayeeParty": 
+                    {
+                        "PartyId": null, 
+                        "FullName": null, 
+                        "Address": 
+                        {
+                            "Street": null,
+                            "City": null, 
+                            "State": null, 
+                            "Zip": null
+                        }
+                    },
+                    "PaymentAnnotation": null
+                } 
+            }
+        }
+    ]
+}
+}
+// dont need currency, account and parties stuff
