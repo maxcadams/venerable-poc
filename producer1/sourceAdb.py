@@ -43,6 +43,8 @@ class SourceA:
                     {'AttributeName': 'id', 'AttributeType': 'S'}
                 ],
                 ProvisionedThroughput={'ReadCapacityUnits': 20, 'WriteCapacityUnits': 20})
+
+            print("Creating table...")    
             self.table.wait_until_exists()
         except ClientError as err:
             logger.error(
@@ -50,6 +52,7 @@ class SourceA:
                 err.response['Error']['Code'], err.response['Error']['Message'])
             raise
         
+        print("Table created!")
         return self.table
 
 
@@ -98,8 +101,11 @@ class SourceA:
         :param file_name: file name of json object with sample data
         """
         transactions = self.get_transaction_data(file_name)
+        print("Adding transaction data...")
         for transaction in transactions:
             self.add_transaction(transaction)
+
+        print("Transaction data added!")
 
     def scan_transactions(self):
         """
@@ -113,6 +119,7 @@ class SourceA:
         Deletes table.
         """
         try:
+            print("Deleting tables...")
             self.table.delete()
             self.table = None
         except ClientError as err:

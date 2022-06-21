@@ -11,9 +11,9 @@
 #
 # Happy Coding!
 
-service: sourceAadapter
+service: footyAdapter1
 # app and org for use with dashboard.serverless.com
-#app: your-app-name
+app: venerable-poc
 org: madams
 
 # You can pin your service to only deploy with a specific Serverless version
@@ -26,7 +26,8 @@ provider:
   stage: dev
   region: us-east-1
   environment: 
-    TABLE: sourceA-transactions
+    MATCHES_TABLE: matches 
+    TRANSACTIONS_TABLE: transactions
   iam:
     role:
       statements:
@@ -39,56 +40,18 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
           Resource: 
-            -  "arn:aws:dynamodb:us-east-1:706797746903:table/${self:provider.environment.TABLE}"
+            -  "arn:aws:dynamodb:us-east-1:706797746903:table/${self:provider.environment.MATCHES_TABLE}"
+            -  "arn:aws:dynamodb:us-east-1:706797746903:table/${self:provider.environment.TRANSACTIONS_TABLE}"
 
 functions:
   adapt:
-    handler: sourceAadapter.adapt
+    handler: adapter.adapt
     events:
-      -  http:
+      -  http: 
            path: all
            method: get
            cors: true
-  
-
-
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
-
-# you can add statements to the Lambda function's IAM Role here
-#  iam:
-#    role:
-#      statements:
-#        - Effect: "Allow"
-#          Action:
-#            - "s3:ListBucket"
-#          Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#        - Effect: "Allow"
-#          Action:
-#            - "s3:PutObject"
-#          Resource:
-#            Fn::Join:
-#              - ""
-#              - - "arn:aws:s3:::"
-#                - "Ref" : "ServerlessDeploymentBucket"
-#                - "/*"
-
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
-
-# you can add packaging information here
-#package:
-#  patterns:
-#    - '!exclude-me.py'
-#    - '!exclude-me-dir/**'
-#    - include-me.py
-#    - include-me-dir/**
-
-functions:
-  hello:
-    handler: handler.hello
+    
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

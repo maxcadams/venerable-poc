@@ -105,8 +105,8 @@ def adapt_helper(transactions: list, matches : list) -> dict:
 
 def adapt(event, context):
     
-    table1 = dynamodb.Table(os.environ['TRANSACTIONS_TABLE'])
-    table2 = dynamodb.Table(os.environ['MATCHES_TABLE'])
+    table1 = dynamodb.Table(os.environ['TRANSACTIONS_TABLE'])  # type: ignore
+    table2 = dynamodb.Table(os.environ['MATCHES_TABLE'])  # type: ignore
 
     transactions_scan = table1.scan() #type dict
     matches_scan = table2.scan()

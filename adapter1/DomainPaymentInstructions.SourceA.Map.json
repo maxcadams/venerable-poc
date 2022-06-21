@@ -1,0 +1,94 @@
+Transactions :
+{
+	SchemaVersion : String, //v1.0
+	PaymentInstructions :
+	[	
+		PaymentInstruction:
+		{
+			ContextSource :
+			{
+				Source : String, //GARWIN
+				TriggeringPaymentEventLocation : String, //[Site] decoded to Enum 
+													(DSM=SITE,
+													WC=OFFICE)												
+				TriggeringPaymentEvent : String, //[TransactionCd] decoded to Enum 
+													(WTH=WITHDRAWAL,
+													DTH=DEATH_BENEFIT,
+													CHRG=SURRENDER_CHARGE,
+													BONUS=BONUS_RECAPTURE,
+													MVA=MARKET_VALUE_ADJ,
+													TRA=TOTAL_RETURN_ADJ)
+
+				TriggeringPaymentEventId : String, //[ClaimNum]
+				TriggeringPaymentEventDatetime : Timestamp, //null or do not include property
+				TriggeringPaymentEventBatchCycleId : String, //[BatchId]
+				TriggeringPaymentEventBatchCycleDatetime : Timestamp, //[BatchDate]
+			},
+			VenerableLedgerProcessing : 
+			{
+				PaymentCompanyParty: // Lookup of OraganizationParty based on Alias = [CompanyId] with AliasSet = "VenerableCompanies"
+				{
+					PartyId : String,
+					PartyName : String
+				},
+				PaymentCompanyGeneralLedgerAccount:  //Lookup of Account based on AccountAlias = "VIAC" with AliasSet="VenerableAccounts"
+				{
+					AccountId : String,
+					AccountAliasSet : String,
+					AccountAlias : String
+				},
+				PaymentCompanyCostCenter: String, //[CostCenter]
+				IntendedGeneralLedgerPostingDate: Date // [BatchDate]
+			},
+			PaymentInfo :
+			{
+				PaymentIssuerBankParty : //Lookup Party, Alias = [IssuerBankName], AliasSet = "BankingInstitutions"
+				{
+					PartyId : String,
+					FullName : String,	
+					ABARoutingNumber: String 
+				},
+				PaymentIssuerBankAccount : //Lookup Account based on Alias = [IssuerBankName], AliasSet = "BankAccounts"
+				{
+					AccountId : String,
+					AccountName : String,
+					AccountAliasSet : String,
+					AccountAlias : String
+				},
+				IntendedPaymentIssuerBankPostingDate : Timestamp, //[BatchDate]
+				PaymentTransactionId: String, //Generate GUID
+				Payment :
+				{
+					PaymentMechanism : String (Enum = CHECK, FEDWIRE, ACH), //Decode Enum from [TransType]
+					CurrencyInstrument : //Lookup Instrument on SymbolFamily = "CURRENCIES", Symbol = "USD"
+					{
+						InstrumentId: String, 
+						SymbolFamily : String,
+						Symbol : String
+					},
+					CurrencyAmount : Decimal //Amount]
+				}
+			},
+			PayeeDetails:
+			{
+				AnnuityPolicyId : String, //[ContractNum]
+				PayeePolicyRole : String (Enum = ANNUITANT, BENEFICIARY, OTHER), //Decode based on which set of fields([AnnuitantName],[BeneficiaryName], [OtherPayeeName])   are not null 
+				PayeeParty : //Party lookup by Alias = name, for non-null fields [AnnuitantName],[BeneficiaryName], [OtherPayeeName], AliasSet = "PAYEES"
+				{
+					PartyId : String,
+					FullName : String,
+					Address :
+					{
+						Street : String,
+						City : String,
+						State : String,
+						Zip : String
+					},
+				},
+				PaymentAnnotation : String //[Message]
+			}		
+			
+		}
+	]
+
+}
