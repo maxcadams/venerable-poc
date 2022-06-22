@@ -3,7 +3,8 @@
     {
         "VIAC": {
             "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A", 
-            "FullName" : "Venerable Holdings Inc" 
+            "PartyName" : "Venerable Holdings Inc" 
         }
     }
 }
+

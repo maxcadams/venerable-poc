@@ -1,4 +1,5 @@
 import json
+from typing import final
 import decimalencoder
 import os
 import boto3
@@ -17,16 +18,34 @@ BE AS LAZY AS POSSIBLE (when coding)
 -- break down building model structure into several no-input functions
 
 """
+dynamodb = boto3.resource('dynamodb')
 
-def lookup(alias, alias_set):
+
+def lookup(alias, alias_set, lookup_file):
     """
     Performs a party look up by alias in alias_set.
 
     :param alias: Alias of party we are looking up.
     :param alias_set: Alias set in which party resides.
+    :param lookup_file: File name of json (look up db)
     :return: Party information
     """
-    pass
+    with open(lookup_file) as file:
+        file_content = json.load(file, parse_float=Decimal)
+
+        if (lookup_file == 'Instrument.json'):
+            return file_content
+        elif(lookup_file == 'PersonParty.json'):
+            person = list(filter(lambda payee: payee['FullName'] == alias, 
+                        file_content[alias_set]))[0] 
+                        # list(filter) returns list of one entry for person 
+                        # with name 'alias', so we access elt @ index 0 
+            return person
+        
+        #here, we are either in Account, BankParty, or OrganizationParty lookup
+        return file_content[alias_set][alias]
+
+
 
 def build_PayeeDetails(transaction):
     """
@@ -35,7 +54,27 @@ def build_PayeeDetails(transaction):
     :param transaction: Transaction data being used to build section.
     :return: PayeeDetails section.
     """
-    pass
+    PayeeDetails = {}
+    PayeeDetails['AnnuityPolicyId'] = transaction['ContractNum']
+    
+
+    if transaction['AnnuitantName'] != "":
+        PayeeDetails['PayeePolicyRole'] = 'ANNUITANT'
+        alias = transaction['AnnuitantName']
+    elif transaction['BeneficiaryName'] != "":
+        PayeeDetails['PayeePolicyRole'] = 'BENEFICIARY'
+        alias = transaction['BeneficiaryName']
+    else: #OtherPayeeName != ""
+        PayeeDetails['PayeePolicyRole'] = 'OTHER'
+        alias = transaction['OtherPayeeName']
+    
+    PayeeDetails['PayeeParty'] = lookup(alias=alias, alias_set='Payees', 
+    lookup_file='PersonParty.json')
+
+    PayeeDetails['PaymentAnnotation'] = transaction['Message']
+
+    return PayeeDetails        
+    
 
 
 def build_PaymentInfo(transaction):
@@ -45,7 +84,27 @@ def build_PaymentInfo(transaction):
     :param transaction: Transaction data being used to build section.
     :return: PaymentInfo section.
     """
-    pass
+    PaymentInfo = {}
+    PaymentInfo['PaymentIssuerBankParty'] = lookup(alias=transaction['IssuerBankName'], 
+    alias_set='BankingInstitutions', lookup_file='BankParty.json')
+    PaymentInfo['PaymentIssuerBankAccount'] = lookup(alias=transaction['IssuerBankAccount'],
+    alias_set='BankAccounts', lookup_file='Account.json')
+    PaymentInfo['IntendedPaymentIssuerBankPostingDate'] = transaction['BatchDate']
+    PaymentInfo['PaymentTransactionId'] = transaction['id']
+    
+    payment = {}
+    payment['PaymentMechanism'] = 'CHECK' #hardcoded to CHECK bc all entries are TransType CHK
+    payment['CurrencyAmount'] = transaction['Amount'][1:] #don't want the '$'
+    payment['CurrencyInstrument'] = lookup(alias=None, 
+    alias_set=None, lookup_file='Instrument.json')
+    
+    PaymentInfo['Payment'] = payment
+
+    return PaymentInfo
+
+
+    
+
 
 def build_VLP(transaction):
     """
@@ -57,6 +116,12 @@ def build_VLP(transaction):
     vlp = {}
     vlp['PaymentCompanyCostCenter'] = transaction['CostCenter']
     vlp['IntendedGeneralLedgerPostingDate'] = transaction['BatchDate']
+    vlp['PaymentCompanyParty'] = lookup(alias=transaction['CompanyId'], 
+    alias_set='VenerableCompanies', lookup_file='OrganizationParty.json')
+    vlp['PaymentCompanyGeneralLedgerAccount'] = lookup(alias='VIACPMT', 
+    alias_set='BankAccounts', lookup_file='Account.json')
+    
+    return vlp
     
 
 def build_ContextSource(transaction):
@@ -73,7 +138,7 @@ def build_ContextSource(transaction):
     ContextSource['TriggeringPaymentEventID'] = transaction['ClaimNum']
     ContextSource['TriggeringPaymentDatetime'] = None #ask about this
     ContextSource['TriggeringPaymentEventBatchCycleId'] = transaction['BatchId']
-    ContextSource['TriggeringPaymentEventBatchCycleDatetime'] = transaction['Batch Date']
+    ContextSource['TriggeringPaymentEventBatchCycleDatetime'] = transaction['BatchDate']
     
     # for getting TriggeringPaymentEvent of TransactionCd and decoding
     # to Enum (WTH=WITHDRAWAL,
@@ -123,24 +188,38 @@ def build_PaymentInstruction(transaction, payment_instructions):
     payment_instructions.append(pi)
     return
 
-def build_domain():
+def build_domain(transactions : list):
     """
     Builds outer skeleton of domain for payment instructions.
+
+    :param transactions: transactions from sourceA (list)
     """
-    transactions = {
+    final = {
         'Transactions': {
             'SchemaVersion': 'v1.0',
             'PaymentInstructions': []
         }
     }
     
-    payment_instructions : list = transactions['Transactions']['PaymentInstructions']
+    payment_instructions : list = final['Transactions']['PaymentInstructions']
     
-    return transactions
+    for transaction in transactions:
+        build_PaymentInstruction(transaction, payment_instructions)
+    
+
+
+    return final
 
 
 def adapt(event, context):
     
+    table = dynamodb.Table(os.environ['TABLE'])
+
+    table_scan = table.scan()
+    transactions = table_scan['Items']
+
+    domain = build_domain(transactions)
+
     response = {
         "statusCode": 200,
         "body": json.dumps()
