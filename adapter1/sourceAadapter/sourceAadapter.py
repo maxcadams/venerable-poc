@@ -4,6 +4,7 @@ import decimalencoder
 import os
 import boto3
 from decimal import Decimal
+import pprint
 
 """
 Lambda handler that takes in data from sourceA and adapts it to domain model
@@ -205,7 +206,6 @@ def build_domain(transactions : list):
     
     for transaction in transactions:
         build_PaymentInstruction(transaction, payment_instructions)
-    
 
 
     return final
@@ -222,7 +222,7 @@ def adapt(event, context):
 
     response = {
         "statusCode": 200,
-        "body": json.dumps()
+        "body": json.dumps(domain, cls=decimalencoder.DecimalEncoder)
     }
 
     return response
@@ -235,3 +235,13 @@ def adapt(event, context):
         "event": event
     }
     """
+
+
+if __name__ == '__main__':
+    with open('sourceA.json') as file:
+        entries = json.load(file, parse_float=Decimal)
+        
+    domain = build_domain(entries)
+    
+    with open('output.json', 'w') as output:
+        json.dump(domain, output)
