@@ -13,6 +13,7 @@ import boto3
 from boto3.dynamodb.conditions import Key
 from botocore.exceptions import ClientError
 import pprint
+# from botocore.errorfactory import ResourceInUseException
 
 logger = logging.getLogger(__name__)
 
@@ -47,10 +48,15 @@ class SourceA:
             print("Creating table...")    
             self.table.wait_until_exists()
         except ClientError as err:
-            logger.error(
+            if(err.response['Error']['Code'] == 'ResourceInUseException'):
+                print("Table was already created! ... continuing process")
+                self.table = self.dyn_resource.Table(table_name)
+            else:
+                logger.error(
                 "Couldn't create table %s. Here's why: %s: %s", table_name,
                 err.response['Error']['Code'], err.response['Error']['Message'])
-            raise
+                raise
+
         
         print("Table created!")
         return self.table
@@ -122,6 +128,7 @@ class SourceA:
             print("Deleting tables...")
             self.table.delete()
             self.table = None
+            print("Table deleted.")
         except ClientError as err:
             logger.error(
                 "Couldn't delete tables. Here's why: %s: %s",
