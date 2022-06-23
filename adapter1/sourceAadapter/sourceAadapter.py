@@ -1,24 +1,16 @@
+"""
+Contains lambda handler and helper functions
+for translating sourceA data to domain model. 
+
+Author: Max Adams
+"""
+
 import json
-from typing import final
 import decimalencoder
 import os
 import boto3
 from decimal import Decimal
-import pprint
 
-"""
-Lambda handler that takes in data from sourceA and adapts it to domain model
-schema. 
-
-Right now, we should perform all of the look up files, 
-then start building from the inside and move out.
-
-BE AS LAZY AS POSSIBLE (when coding)
--- with lookups, try to make it a single function
-
--- break down building model structure into several no-input functions
-
-"""
 dynamodb = boto3.resource('dynamodb')
 
 

@@ -46,7 +46,7 @@ functions:
     handler: sourceAadapter.adapt
     events:
       -  http:
-           path: adapt
+           path: sourceA
            method: get
            cors: true
   

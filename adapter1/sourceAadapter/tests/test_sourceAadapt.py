@@ -3,8 +3,7 @@ Test sourceA adapter logic.
 
 Author: Max Adams
 
-In test functions,
-_wf suffix means wells fargo specific checks
+Note: In test functions, _wf suffix signifies Wells Fargo specific tests.
 """
 
 
