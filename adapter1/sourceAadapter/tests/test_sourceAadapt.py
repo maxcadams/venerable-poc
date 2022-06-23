@@ -10,13 +10,8 @@ _wf suffix means wells fargo specific checks
 
 import pytest
 
-from decimal import Decimal
-import boto3
-
 import sourceAadapter
-import pprint 
 
-# dyn_resource = boto3.resource('dynamodb')
 
 example_data = {
    "id": "5b288c57-bb42-4e38-b42c-afbe13816dab",
