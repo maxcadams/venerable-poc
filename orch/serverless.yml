@@ -65,7 +65,7 @@ functions:
   orch:
     handler: orch.orch
     events:
-      -  http: 
+      -  http:
            path: orch
            method: get
            cors: true

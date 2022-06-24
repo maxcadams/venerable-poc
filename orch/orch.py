@@ -1,6 +1,6 @@
 import urllib3
 
-url = 'https://pyasz7b5kl.execute-api.us-east-1.amazonaws.com/dev/all'
+url = 'https://453qeois5f.execute-api.us-east-1.amazonaws.com/dev/sourceA'
 # turn into a list when we have multiple urls
 
 def orch(event, context):
@@ -22,5 +22,5 @@ def orch(event, context):
     return response
 
 
-# note: with multiple adapter outputs, want to put together the sections, not have 
+# note: with multiple adapter outputs, want to put together the sections, not have
 # a list of json bodies (kinda like stack each section)
