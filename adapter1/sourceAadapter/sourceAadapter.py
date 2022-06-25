@@ -160,7 +160,7 @@ def build_ContextSource(transaction):
     
      
 
-def build_PaymentInstruction(transaction, payment_instructions):
+def build_PaymentInstruction(transaction):
     """
     Builds payment instruction item using transaction and appends it 
     to payment_instructions.
@@ -178,8 +178,7 @@ def build_PaymentInstruction(transaction, payment_instructions):
     PaymentInstruction['PaymentInfo'] = build_PaymentInfo(transaction)
     PaymentInstruction['PayeeDetails'] = build_PayeeDetails(transaction)
     
-    payment_instructions.append(pi)
-    return
+    return pi
 
 def build_domain(transactions : list):
     """
@@ -194,11 +193,8 @@ def build_domain(transactions : list):
         }
     }
     
-    payment_instructions : list = final['Transactions']['PaymentInstructions']
-    
-    for transaction in transactions:
-        build_PaymentInstruction(transaction, payment_instructions)
-
+    # builds list using list comprehension
+    final['Transactions']['PaymentInstructions'] = [build_PaymentInstruction(transaction) for transaction in transactions]
 
     return final
 

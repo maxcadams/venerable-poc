@@ -49,18 +49,15 @@ example_data = {
    "IssuerBankAccount": "WFPMTS"
   }
 
-#PaymentInstructionList
-pil = []
-sourceAadapter.build_PaymentInstruction(example_data, pil)
+pi_outter = sourceAadapter.build_PaymentInstruction(example_data)
 
 def test_outer_node():
     """
     Checks if 'PaymentInstruction' node exists
     """
-    assert 'PaymentInstruction' in pil[0].keys() 
+    assert 'PaymentInstruction' in pi_outter.keys() 
 
-pi = pil[0]['PaymentInstruction'] # get the single payment instruction from pi list
-
+pi = pi_outter['PaymentInstruction']
 
 def test_payment_instruction_nodes_wf():
     """
