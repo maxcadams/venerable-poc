@@ -82,13 +82,21 @@ def add_data(transactions):
                     sequenceIdCounter, #SequenceID
                     date.today().strftime('%Y%m%d'), #BatchDate
                     pi['PayeeDetails']['AnnuityPolicyId'], #PolicyNum
-                    pi['PayeeParty']['FullName'], #PayeeFullName 
-                    pi['PayeeParty']['Address']['Street']
+                    pi['PayeeDetails']['PayeeParty']['FullName'], #PayeeFullName 
+                    pi['PayeeDetails']['PayeeParty']['Address']['Street'], #PayeeStreet
+                    pi['PayeeDetails']['PayeeParty']['Address']['City'], #PayeeCity
+                    pi['PayeeDetails']['PayeeParty']['Address']['State'], #PayeeState
+                    pi['PayeeDetails']['PayeeParty']['Address']['Zip'], #PayeeZipcode
+                    lookup('VenerableCheckAccount', 'WellsFargoAccount', 'Account.json'), #Account
+                    pi['PayeeDetails']['PayeeParty']['PaymentAnnotation'], #Comments
+                    pi['PaymentInfo']['Payment']['CurrencyAmount'], #Amount
+                    pi['PaymentInfo']['Payment']['CurrencyInstrument']['Symbol'], #Currency
+                    pi['PaymentInfo']['ContextSource']['Source'], #SourceSystem
+            ]
+            writer.writerow(row)
 
-
-        
-    
-
+            #increment sequence id
+            sequenceIdCounter+=1
 
 
 if __name__ == '__main__':
