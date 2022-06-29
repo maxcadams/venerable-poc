@@ -1,0 +1,535 @@
+{
+    "Transactions": {
+        "SchemaVersion": "v1.0",
+        "PaymentInstructions": [
+            {
+                "PaymentInstruction": {
+                    "ContextSource": {
+                        "Source": "GARWIN",
+                        "TriggeringPaymentEventLocation": "OFFICE",
+                        "TriggeringPaymentEventID": 320695,
+                        "TriggeringPaymentDatetime": null,
+                        "TriggeringPaymentEventBatchCycleId": 123591,
+                        "TriggeringPaymentEventBatchCycleDatetime": "20220314",
+                        "TriggeringPaymentEvent": "DEATH_BENEFIT"
+                    },
+                    "VenerableLedgerProcessing": {
+                        "PaymentCompanyCostCenter": 10062,
+                        "IntendedGeneralLedgerPostingDate": "20220314",
+                        "PaymentCompanyParty": {
+                            "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
+                            "PartyName": "Venerable Holdings Inc"
+                        },
+                        "PaymentCompanyGeneralLedgerAccount": {
+                            "AccountId": "2726219",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "VIACPMT",
+                            "AccountName": "VIAC Payments"
+                        }
+                    },
+                    "PaymentInfo": {
+                        "PaymentIssuerBankParty": {
+                            "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
+                            "FullName": "WellsFargo Bank, Inc",
+                            "ABARoutingNumber": "21200025"
+                        },
+                        "PaymentIssuerBankAccount": {
+                            "AccountId": "1651619",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "WFPMTS",
+                            "AccountName": "WellsFargo VIAC Payments"
+                        },
+                        "IntendedPaymentIssuerBankPostingDate": "20220314",
+                        "PaymentTransactionId": "5b288c57-bb42-4e38-b42c-afbe13816dab",
+                        "Payment": {
+                            "PaymentMechanism": "CHECK",
+                            "CurrencyAmount": "15,231.36",
+                            "CurrencyInstrument": {
+                                "SymbolFamily": "Currencies",
+                                "Symbol": "USD",
+                                "InstrumentId": "DE134898-14D5-410D-8174-F739A4CE2BB3"
+                            }
+                        }
+                    },
+                    "PayeeDetails": {
+                        "AnnuityPolicyId": "15681-61-2062",
+                        "PayeePolicyRole": "BENEFICIARY",
+                        "PayeeParty": {
+                            "PartyId": "8F6D55BD-D47B-4AC5-9A78-11007BB18109",
+                            "FullName": "Bill Suthington",
+                            "Address": {
+                                "Street": "72 Walnut Street",
+                                "City": "West Deptford",
+                                "State": "NJ",
+                                "Zip": "8096"
+                            }
+                        },
+                        "PaymentAnnotation": "Death Interest details for this disbursement are shown below"
+                    }
+                }
+            },
+            {
+                "PaymentInstruction": {
+                    "ContextSource": {
+                        "Source": "GARWIN",
+                        "TriggeringPaymentEventLocation": "SITE",
+                        "TriggeringPaymentEventID": 320702,
+                        "TriggeringPaymentDatetime": null,
+                        "TriggeringPaymentEventBatchCycleId": 123591,
+                        "TriggeringPaymentEventBatchCycleDatetime": "20220314",
+                        "TriggeringPaymentEvent": "WITHDRAWAL"
+                    },
+                    "VenerableLedgerProcessing": {
+                        "PaymentCompanyCostCenter": 10062,
+                        "IntendedGeneralLedgerPostingDate": "20220314",
+                        "PaymentCompanyParty": {
+                            "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
+                            "PartyName": "Venerable Holdings Inc"
+                        },
+                        "PaymentCompanyGeneralLedgerAccount": {
+                            "AccountId": "2726219",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "VIACPMT",
+                            "AccountName": "VIAC Payments"
+                        }
+                    },
+                    "PaymentInfo": {
+                        "PaymentIssuerBankParty": {
+                            "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
+                            "FullName": "WellsFargo Bank, Inc",
+                            "ABARoutingNumber": "21200025"
+                        },
+                        "PaymentIssuerBankAccount": {
+                            "AccountId": "1651619",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "WFPMTS",
+                            "AccountName": "WellsFargo VIAC Payments"
+                        },
+                        "IntendedPaymentIssuerBankPostingDate": "20220314",
+                        "PaymentTransactionId": "013aa351-af32-4845-ab84-c13f626e4379",
+                        "Payment": {
+                            "PaymentMechanism": "CHECK",
+                            "CurrencyAmount": "35,169.00",
+                            "CurrencyInstrument": {
+                                "SymbolFamily": "Currencies",
+                                "Symbol": "USD",
+                                "InstrumentId": "DE134898-14D5-410D-8174-F739A4CE2BB3"
+                            }
+                        }
+                    },
+                    "PayeeDetails": {
+                        "AnnuityPolicyId": "6169-69-6522",
+                        "PayeePolicyRole": "ANNUITANT",
+                        "PayeeParty": {
+                            "PartyId": "24813150-298C-407F-96D9-6E1F96216812",
+                            "FullName": "Joe Schmo",
+                            "Address": {
+                                "Street": "100 River Dr",
+                                "City": "Philadelphia",
+                                "State": "PA",
+                                "Zip": "19019"
+                            }
+                        },
+                        "PaymentAnnotation": "For any questions, please call 1-800-369-5303."
+                    }
+                }
+            },
+            {
+                "PaymentInstruction": {
+                    "ContextSource": {
+                        "Source": "GARWIN",
+                        "TriggeringPaymentEventLocation": "OFFICE",
+                        "TriggeringPaymentEventID": 320695,
+                        "TriggeringPaymentDatetime": null,
+                        "TriggeringPaymentEventBatchCycleId": 123591,
+                        "TriggeringPaymentEventBatchCycleDatetime": "20220314",
+                        "TriggeringPaymentEvent": "DEATH_BENEFIT"
+                    },
+                    "VenerableLedgerProcessing": {
+                        "PaymentCompanyCostCenter": 10062,
+                        "IntendedGeneralLedgerPostingDate": "20220314",
+                        "PaymentCompanyParty": {
+                            "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
+                            "PartyName": "Venerable Holdings Inc"
+                        },
+                        "PaymentCompanyGeneralLedgerAccount": {
+                            "AccountId": "2726219",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "VIACPMT",
+                            "AccountName": "VIAC Payments"
+                        }
+                    },
+                    "PaymentInfo": {
+                        "PaymentIssuerBankParty": {
+                            "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
+                            "FullName": "WellsFargo Bank, Inc",
+                            "ABARoutingNumber": "21200025"
+                        },
+                        "PaymentIssuerBankAccount": {
+                            "AccountId": "1651619",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "WFPMTS",
+                            "AccountName": "WellsFargo VIAC Payments"
+                        },
+                        "IntendedPaymentIssuerBankPostingDate": "20220314",
+                        "PaymentTransactionId": "d795c411-ddbb-4df0-81eb-027f5fb5c924",
+                        "Payment": {
+                            "PaymentMechanism": "CHECK",
+                            "CurrencyAmount": "9,198.35",
+                            "CurrencyInstrument": {
+                                "SymbolFamily": "Currencies",
+                                "Symbol": "USD",
+                                "InstrumentId": "DE134898-14D5-410D-8174-F739A4CE2BB3"
+                            }
+                        }
+                    },
+                    "PayeeDetails": {
+                        "AnnuityPolicyId": "15691-61-2323",
+                        "PayeePolicyRole": "BENEFICIARY",
+                        "PayeeParty": {
+                            "PartyId": "B31BF9D3-16A2-4AF3-B02E-64D28CB8B648",
+                            "FullName": "Sue B Anthony",
+                            "Address": {
+                                "Street": "1524 Cooper Str",
+                                "City": "West Deptford",
+                                "State": "NJ",
+                                "Zip": "8096"
+                            }
+                        },
+                        "PaymentAnnotation": "Death Interest details for this disbursement are shown below"
+                    }
+                }
+            },
+            {
+                "PaymentInstruction": {
+                    "ContextSource": {
+                        "Source": "GARWIN",
+                        "TriggeringPaymentEventLocation": "OFFICE",
+                        "TriggeringPaymentEventID": 320695,
+                        "TriggeringPaymentDatetime": null,
+                        "TriggeringPaymentEventBatchCycleId": 123591,
+                        "TriggeringPaymentEventBatchCycleDatetime": "20220314",
+                        "TriggeringPaymentEvent": "SURRENDER_CHARGE"
+                    },
+                    "VenerableLedgerProcessing": {
+                        "PaymentCompanyCostCenter": 10062,
+                        "IntendedGeneralLedgerPostingDate": "20220314",
+                        "PaymentCompanyParty": {
+                            "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
+                            "PartyName": "Venerable Holdings Inc"
+                        },
+                        "PaymentCompanyGeneralLedgerAccount": {
+                            "AccountId": "2726219",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "VIACPMT",
+                            "AccountName": "VIAC Payments"
+                        }
+                    },
+                    "PaymentInfo": {
+                        "PaymentIssuerBankParty": {
+                            "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
+                            "FullName": "WellsFargo Bank, Inc",
+                            "ABARoutingNumber": "21200025"
+                        },
+                        "PaymentIssuerBankAccount": {
+                            "AccountId": "1651619",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "WFPMTS",
+                            "AccountName": "WellsFargo VIAC Payments"
+                        },
+                        "IntendedPaymentIssuerBankPostingDate": "20220314",
+                        "PaymentTransactionId": "8216be9e-7870-4ade-8aa1-9959e0fc9d26",
+                        "Payment": {
+                            "PaymentMechanism": "CHECK",
+                            "CurrencyAmount": "152.90",
+                            "CurrencyInstrument": {
+                                "SymbolFamily": "Currencies",
+                                "Symbol": "USD",
+                                "InstrumentId": "DE134898-14D5-410D-8174-F739A4CE2BB3"
+                            }
+                        }
+                    },
+                    "PayeeDetails": {
+                        "AnnuityPolicyId": "26621-98-6212",
+                        "PayeePolicyRole": "ANNUITANT",
+                        "PayeeParty": {
+                            "PartyId": "FD4F14EA-DE72-4CF5-857B-9EAE6745A2FC",
+                            "FullName": "Mike Lebowski",
+                            "Address": {
+                                "Street": "19 Dudirito Rd",
+                                "City": "Los Angelos",
+                                "State": "CA",
+                                "Zip": "90001"
+                            }
+                        },
+                        "PaymentAnnotation": "For any questions, please call 1-800-369-5303. "
+                    }
+                }
+            },
+            {
+                "PaymentInstruction": {
+                    "ContextSource": {
+                        "Source": "GARWIN",
+                        "TriggeringPaymentEventLocation": "OFFICE",
+                        "TriggeringPaymentEventID": 320695,
+                        "TriggeringPaymentDatetime": null,
+                        "TriggeringPaymentEventBatchCycleId": 123591,
+                        "TriggeringPaymentEventBatchCycleDatetime": "20220314",
+                        "TriggeringPaymentEvent": "SURRENDER_CHARGE"
+                    },
+                    "VenerableLedgerProcessing": {
+                        "PaymentCompanyCostCenter": 10062,
+                        "IntendedGeneralLedgerPostingDate": "20220314",
+                        "PaymentCompanyParty": {
+                            "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
+                            "PartyName": "Venerable Holdings Inc"
+                        },
+                        "PaymentCompanyGeneralLedgerAccount": {
+                            "AccountId": "2726219",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "VIACPMT",
+                            "AccountName": "VIAC Payments"
+                        }
+                    },
+                    "PaymentInfo": {
+                        "PaymentIssuerBankParty": {
+                            "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
+                            "FullName": "WellsFargo Bank, Inc",
+                            "ABARoutingNumber": "21200025"
+                        },
+                        "PaymentIssuerBankAccount": {
+                            "AccountId": "1651619",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "WFPMTS",
+                            "AccountName": "WellsFargo VIAC Payments"
+                        },
+                        "IntendedPaymentIssuerBankPostingDate": "20220314",
+                        "PaymentTransactionId": "c11ff50f-d48b-4f64-9775-3254307b3f7f",
+                        "Payment": {
+                            "PaymentMechanism": "CHECK",
+                            "CurrencyAmount": "651.69",
+                            "CurrencyInstrument": {
+                                "SymbolFamily": "Currencies",
+                                "Symbol": "USD",
+                                "InstrumentId": "DE134898-14D5-410D-8174-F739A4CE2BB3"
+                            }
+                        }
+                    },
+                    "PayeeDetails": {
+                        "AnnuityPolicyId": "36123-98-6233",
+                        "PayeePolicyRole": "ANNUITANT",
+                        "PayeeParty": {
+                            "PartyId": "406F265F-4953-4A0B-BCC3-2988B3EA3DFB",
+                            "FullName": "Sam Rose",
+                            "Address": {
+                                "Street": "165 Main St",
+                                "City": "West Deptford",
+                                "State": "NJ",
+                                "Zip": "8096"
+                            }
+                        },
+                        "PaymentAnnotation": "For any questions, please call 1-800-369-5303. "
+                    }
+                }
+            },
+            {
+                "PaymentInstruction": {
+                    "ContextSource": {
+                        "Source": "GARWIN",
+                        "TriggeringPaymentEventLocation": "SITE",
+                        "TriggeringPaymentEventID": 320695,
+                        "TriggeringPaymentDatetime": null,
+                        "TriggeringPaymentEventBatchCycleId": 123591,
+                        "TriggeringPaymentEventBatchCycleDatetime": "20220314",
+                        "TriggeringPaymentEvent": "DEATH_BENEFIT"
+                    },
+                    "VenerableLedgerProcessing": {
+                        "PaymentCompanyCostCenter": 10062,
+                        "IntendedGeneralLedgerPostingDate": "20220314",
+                        "PaymentCompanyParty": {
+                            "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
+                            "PartyName": "Venerable Holdings Inc"
+                        },
+                        "PaymentCompanyGeneralLedgerAccount": {
+                            "AccountId": "2726219",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "VIACPMT",
+                            "AccountName": "VIAC Payments"
+                        }
+                    },
+                    "PaymentInfo": {
+                        "PaymentIssuerBankParty": {
+                            "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
+                            "FullName": "WellsFargo Bank, Inc",
+                            "ABARoutingNumber": "21200025"
+                        },
+                        "PaymentIssuerBankAccount": {
+                            "AccountId": "1651619",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "WFPMTS",
+                            "AccountName": "WellsFargo VIAC Payments"
+                        },
+                        "IntendedPaymentIssuerBankPostingDate": "20220314",
+                        "PaymentTransactionId": "ed27f97c-6dfd-4aca-998a-67da92e82ba0",
+                        "Payment": {
+                            "PaymentMechanism": "CHECK",
+                            "CurrencyAmount": "6,819.36",
+                            "CurrencyInstrument": {
+                                "SymbolFamily": "Currencies",
+                                "Symbol": "USD",
+                                "InstrumentId": "DE134898-14D5-410D-8174-F739A4CE2BB3"
+                            }
+                        }
+                    },
+                    "PayeeDetails": {
+                        "AnnuityPolicyId": "91091-00-6512",
+                        "PayeePolicyRole": "BENEFICIARY",
+                        "PayeeParty": {
+                            "PartyId": "3A882FC3-C6F0-480D-8393-2A98550B9F81",
+                            "FullName": "Matt Wallingsworth",
+                            "Address": {
+                                "Street": "Apt 10, 234 Rundown Rd",
+                                "City": "Los Angelos",
+                                "State": "CA",
+                                "Zip": "90001"
+                            }
+                        },
+                        "PaymentAnnotation": "Death Interest details for this disbursement are shown below"
+                    }
+                }
+            },
+            {
+                "PaymentInstruction": {
+                    "ContextSource": {
+                        "Source": "GARWIN",
+                        "TriggeringPaymentEventLocation": "SITE",
+                        "TriggeringPaymentEventID": 320695,
+                        "TriggeringPaymentDatetime": null,
+                        "TriggeringPaymentEventBatchCycleId": 123591,
+                        "TriggeringPaymentEventBatchCycleDatetime": "20220314",
+                        "TriggeringPaymentEvent": "MARKET_VALUE_ADJ"
+                    },
+                    "VenerableLedgerProcessing": {
+                        "PaymentCompanyCostCenter": 10062,
+                        "IntendedGeneralLedgerPostingDate": "20220314",
+                        "PaymentCompanyParty": {
+                            "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
+                            "PartyName": "Venerable Holdings Inc"
+                        },
+                        "PaymentCompanyGeneralLedgerAccount": {
+                            "AccountId": "2726219",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "VIACPMT",
+                            "AccountName": "VIAC Payments"
+                        }
+                    },
+                    "PaymentInfo": {
+                        "PaymentIssuerBankParty": {
+                            "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
+                            "FullName": "WellsFargo Bank, Inc",
+                            "ABARoutingNumber": "21200025"
+                        },
+                        "PaymentIssuerBankAccount": {
+                            "AccountId": "1651619",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "WFPMTS",
+                            "AccountName": "WellsFargo VIAC Payments"
+                        },
+                        "IntendedPaymentIssuerBankPostingDate": "20220314",
+                        "PaymentTransactionId": "2ddbd161-382b-4d8a-9d2e-82cec713777d",
+                        "Payment": {
+                            "PaymentMechanism": "CHECK",
+                            "CurrencyAmount": "9,919.00",
+                            "CurrencyInstrument": {
+                                "SymbolFamily": "Currencies",
+                                "Symbol": "USD",
+                                "InstrumentId": "DE134898-14D5-410D-8174-F739A4CE2BB3"
+                            }
+                        }
+                    },
+                    "PayeeDetails": {
+                        "AnnuityPolicyId": "91001-32-6191",
+                        "PayeePolicyRole": "OTHER",
+                        "PayeeParty": {
+                            "PartyId": "936b0d88-bef1-43af-b797-d6086144a7d4",
+                            "FullName": "Peter F Samesung",
+                            "Address": {
+                                "Street": "432 Main Street",
+                                "City": "St Paul",
+                                "State": "MN",
+                                "Zip": "55102"
+                            }
+                        },
+                        "PaymentAnnotation": "For any questions, please call 1-800-369-5303. "
+                    }
+                }
+            },
+            {
+                "PaymentInstruction": {
+                    "ContextSource": {
+                        "Source": "GARWIN",
+                        "TriggeringPaymentEventLocation": "SITE",
+                        "TriggeringPaymentEventID": 320695,
+                        "TriggeringPaymentDatetime": null,
+                        "TriggeringPaymentEventBatchCycleId": 123591,
+                        "TriggeringPaymentEventBatchCycleDatetime": "20220314",
+                        "TriggeringPaymentEvent": "DEATH_BENEFIT"
+                    },
+                    "VenerableLedgerProcessing": {
+                        "PaymentCompanyCostCenter": 10062,
+                        "IntendedGeneralLedgerPostingDate": "20220314",
+                        "PaymentCompanyParty": {
+                            "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
+                            "PartyName": "Venerable Holdings Inc"
+                        },
+                        "PaymentCompanyGeneralLedgerAccount": {
+                            "AccountId": "2726219",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "VIACPMT",
+                            "AccountName": "VIAC Payments"
+                        }
+                    },
+                    "PaymentInfo": {
+                        "PaymentIssuerBankParty": {
+                            "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
+                            "FullName": "WellsFargo Bank, Inc",
+                            "ABARoutingNumber": "21200025"
+                        },
+                        "PaymentIssuerBankAccount": {
+                            "AccountId": "1651619",
+                            "AccountAliasSet": "BankAccounts",
+                            "AccountAlias": "WFPMTS",
+                            "AccountName": "WellsFargo VIAC Payments"
+                        },
+                        "IntendedPaymentIssuerBankPostingDate": "20220314",
+                        "PaymentTransactionId": "ab857703-9fe3-4014-8c76-891395c43b8a",
+                        "Payment": {
+                            "PaymentMechanism": "CHECK",
+                            "CurrencyAmount": "19,918.00",
+                            "CurrencyInstrument": {
+                                "SymbolFamily": "Currencies",
+                                "Symbol": "USD",
+                                "InstrumentId": "DE134898-14D5-410D-8174-F739A4CE2BB3"
+                            }
+                        }
+                    },
+                    "PayeeDetails": {
+                        "AnnuityPolicyId": "60266-35-6981",
+                        "PayeePolicyRole": "BENEFICIARY",
+                        "PayeeParty": {
+                            "PartyId": "27FA5689-7799-4407-85B9-1B8545224899",
+                            "FullName": "Chris C Storger",
+                            "Address": {
+                                "Street": "200 Fillington Street",
+                                "City": "Philadelphia",
+                                "State": "PA",
+                                "Zip": "19019"
+                            }
+                        },
+                        "PaymentAnnotation": "Death Interest details for this disbursement are shown below"
+                    }
+                }
+            }
+        ]
+    }
+}
