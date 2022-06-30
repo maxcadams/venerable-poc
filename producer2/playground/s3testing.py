@@ -13,7 +13,7 @@ s3 = boto3.resource('s3')
 s3.create_bucket(Bucket=bucket_name)
 
 bucket = s3.Bucket(bucket_name)
-
+  #                 file_name  obj-key
 bucket.upload_file('text.txt', 'text.txt')
 
 #delete object: s3.Object(bucket_name, obj-key).delete()

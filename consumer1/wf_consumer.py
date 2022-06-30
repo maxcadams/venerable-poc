@@ -3,14 +3,19 @@
 import json
 from decimal import Decimal
 import csv
+import uuid
 from venv import create
 import urllib3
-import uuid #necessary if we change batchId method
 from datetime import datetime, date
 import random
+import logging
+import boto3
+from botocore.exceptions import ClientError
+import os
 
-orch_url = 'https://5q0whtjg5d.execute-api.us-east-1.amazonaws.com/dev/orch'
+logger = logging.getLogger(__name__)
 
+orch_url = 'https://bdt2raiww8.execute-api.us-east-1.amazonaws.com/dev/orch'
 
 def lookup(alias, alias_set, lookup_file):
     """
@@ -109,21 +114,54 @@ def add_data(transactions, file):
         #increment sequence id
         sequenceIdCounter+=1
 
-def main():
-    add_data(get_orch_data(orch_url), create_file())
-
-if __name__ == '__main__':
+def create_bucket(s3, bucket_name):
+    """
     
+    """
+    # s3 = boto3.resource('s3')
+
+    s3.create_bucket(Bucket=bucket_name)
+
+    return s3.Bucket(bucket_name)
+
+def delete_bucket(s3, bucket):
+    """
+    
+    """
+    for item in bucket.objects.all():
+       s3.Object(bucket.name, item.key).delete() 
+    bucket.delete()
+
+
+def main():
+    file_name = ''
+    with create_file() as file:
+        add_data(get_orch_data(orch_url), file)
+        file_name = file.name
+    
+    #creates new dir and moves file into it
+    new_dir = r'wf_files'
+    current_directory = os.getcwd()
+    final_directory = os.path.join(current_directory, new_dir)
+    if not os.path.exists(final_directory):
+        os.makedirs(final_directory)
+    os.replace(f"{current_directory}/{file_name}", f"{final_directory}/{file_name}")
+
+    #creates s3 nicket
+    s3 = boto3.resource('s3')
+    bucket_name = 'wf-consumer-bucket-' + str(uuid.uuid4())
+    bucket = create_bucket(s3, bucket_name)
+    bucket.upload_file(f'{new_dir}/{file_name}', f'{file_name}')
+
+    while(True):
+        prompt = input("Type 'finish' to delete bucket and end process: ")
+        if (prompt == 'finish'):
+            break
+    delete_bucket(s3, bucket)
+    print('Bucket deleted')
+    
+if __name__ == '__main__': 
     main()
     
-    # file_in = open('output.json')
-    # body = json.load(file_in)
-    # transactions = body['Transactions']['PaymentInstructions']
-    # with create_file() as file:
-    #     add_data(transactions, file)
-    #     file.seek(0)
-    #     reader = csv.reader(file)
-    #     headers = reader.__next__()
-    #     print(headers)
 
 

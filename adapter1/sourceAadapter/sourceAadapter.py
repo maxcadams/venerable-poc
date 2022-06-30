@@ -194,7 +194,7 @@ def build_domain(transactions : list):
     }
     
     # builds list using list comprehension
-    final['Transactions']['PaymentInstructions'] = [build_PaymentInstruction(transaction) for transaction in transactions]
+    final['Transactions']['PaymentInstructions'] = [ build_PaymentInstruction(transaction) for transaction in transactions ]
 
     return final
 
