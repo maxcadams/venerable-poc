@@ -1,6 +1,5 @@
 import pytest
 import csv
-from datetime import date, datetime
 import json
 
 from wf_consumer import add_data, create_file
@@ -13,7 +12,6 @@ def test_headers():
             add_data(transactions=transactions, file=file)
             file.seek(0)
             reader = csv.reader(file)
-            #headers = reader.__next__() #gives us headers in a list
             ref_headers = ['BatchID', 'SequenceID', 
                             'BatchDate', 'PolicyNum', 
                             'PayeeFullName', 'PayeeStreet', 
@@ -24,6 +22,3 @@ def test_headers():
             headers = reader.__next__()
             for header in headers:
                 assert header in ref_headers
-                
-
-        

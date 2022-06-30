@@ -4,7 +4,6 @@ import json
 from decimal import Decimal
 import csv
 import uuid
-from venv import create
 import urllib3
 from datetime import datetime, date
 import random
@@ -15,7 +14,7 @@ import os
 
 logger = logging.getLogger(__name__)
 
-orch_url = 'https://bdt2raiww8.execute-api.us-east-1.amazonaws.com/dev/orch'
+orch_url = 'https://p3ieyhp3pj.execute-api.us-east-1.amazonaws.com/dev/orch'
 
 def lookup(alias, alias_set, lookup_file):
     """
@@ -116,9 +115,10 @@ def add_data(transactions, file):
 
 def create_bucket(s3, bucket_name):
     """
-    
+    Create s3 bucket.
+    :param s3: resource input for bucket
+    :param bucket_name: name of bucket
     """
-    # s3 = boto3.resource('s3')
 
     s3.create_bucket(Bucket=bucket_name)
 
@@ -126,7 +126,9 @@ def create_bucket(s3, bucket_name):
 
 def delete_bucket(s3, bucket):
     """
-    
+    Delete s3 bucket along with contents inside.
+    :param s3: resource input for bucket
+    :param bucket: bucket object that we are deleting.
     """
     for item in bucket.objects.all():
        s3.Object(bucket.name, item.key).delete() 
@@ -156,12 +158,10 @@ def main():
     while(True):
         prompt = input("Type 'finish' to delete bucket and end process: ")
         if (prompt == 'finish'):
+            print('Deleting bucket...')
             break
     delete_bucket(s3, bucket)
     print('Bucket deleted')
     
 if __name__ == '__main__': 
     main()
-    
-
-

@@ -21,6 +21,5 @@ def orch(event, context):
 
     return response
 
-
 # note: with multiple adapter outputs, want to put together the sections, not have
 # a list of json bodies (kinda like stack each section)
