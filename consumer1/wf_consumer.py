@@ -118,9 +118,15 @@ def create_bucket(s3, bucket_name):
     Create s3 bucket.
     :param s3: resource input for bucket
     :param bucket_name: name of bucket
+    :return: S3 bucket with bucket_name.
     """
-
-    s3.create_bucket(Bucket=bucket_name)
+    try:
+        s3.create_bucket(Bucket=bucket_name)
+    except ClientError as error:
+            logger.exception(
+                "Couldn't create bucket named '%s'",
+                bucket_name)
+            raise error
 
     return s3.Bucket(bucket_name)
 
@@ -130,9 +136,15 @@ def delete_bucket(s3, bucket):
     :param s3: resource input for bucket
     :param bucket: bucket object that we are deleting.
     """
-    for item in bucket.objects.all():
-       s3.Object(bucket.name, item.key).delete() 
-    bucket.delete()
+    try:
+        for item in bucket.objects.all():
+            s3.Object(bucket.name, item.key).delete() 
+        bucket.delete()
+    except ClientError as error:
+            logger.exception(
+                "Couldn't delete bucket named '%s'",
+                bucket.name)
+            raise error
 
 
 def main():
@@ -149,7 +161,7 @@ def main():
         os.makedirs(final_directory)
     os.replace(f"{current_directory}/{file_name}", f"{final_directory}/{file_name}")
 
-    #creates s3 nicket
+    #creates s3 bucket
     s3 = boto3.resource('s3')
     bucket_name = 'wf-consumer-bucket-' + str(uuid.uuid4())
     bucket = create_bucket(s3, bucket_name)
@@ -157,7 +169,7 @@ def main():
 
     while(True):
         prompt = input("Type 'finish' to delete bucket and end process: ")
-        if (prompt == 'finish'):
+        if prompt == 'finish':
             print('Deleting bucket...')
             break
     delete_bucket(s3, bucket)

@@ -5,15 +5,12 @@ Summer 2022
 author: Max Adams
 """
 
-from asyncio.base_futures import _FINISHED
 from decimal import Decimal
 import json
 import logging
 import boto3
-from boto3.dynamodb.conditions import Key
 from botocore.exceptions import ClientError
 import pprint
-# from botocore.errorfactory import ResourceInUseException
 
 logger = logging.getLogger(__name__)
 

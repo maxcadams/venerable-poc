@@ -57,14 +57,14 @@ def build_PaymentInstruction(transaction, payment_instructions):
     pass
 
 
-def build_PaymentInstruction(transaction, payment_instructions):
+def build_PaymentInstruction(transaction):
     """
     Builds payment instruction item using transaction and appends it 
     to payment_instructions.
 
     :param transaction: Transaction entry from source.
     :param payment_instructions: List of payment_instructions.
-    :return: updated payment instructions --> is this necessary???
+    :return: payment instruction created
     """
     pi = {
         "PaymentInstruction": {}
@@ -75,20 +75,22 @@ def build_PaymentInstruction(transaction, payment_instructions):
     PaymentInstruction['PaymentInfo'] = build_PaymentInfo(transaction)
     PaymentInstruction['PayeeDetails'] = build_PayeeDetails(transaction)
     
-    payment_instructions.append(pi)
-    return
+    return pi
 
-def build_domain():
+def build_domain(transactions : list):
     """
     Builds outer skeleton of domain for payment instructions.
+
+    :param transactions: transactions from sourceA (list)
     """
-    transactions = {
+    final = {
         'Transactions': {
             'SchemaVersion': 'v1.0',
             'PaymentInstructions': []
         }
     }
     
-    payment_instructions : list = transactions['Transactions']['PaymentInstructions']
-    
-    return transactions
+    # builds list using list comprehension
+    final['Transactions']['PaymentInstructions'] = [ build_PaymentInstruction(transaction) for transaction in transactions ]
+
+    return final

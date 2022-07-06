@@ -7,7 +7,6 @@ author: Max Adams
 
 import boto3
 import logging
-import uuid
 from botocore.exceptions import ClientError
 
 logger = logging.getLogger(__name__)
@@ -87,7 +86,7 @@ def main():
 
     s3 = boto3.resource('s3')
     sourceB = sourceBdb(s3)
-    bucket_name = 'source-b-' + str(uuid.uuid4())
+    bucket_name = 'source-b-bucket'
     file_name = 'sourceB.csv'
     logger.info(
                 "Creating bucket '%s' ...", bucket_name
