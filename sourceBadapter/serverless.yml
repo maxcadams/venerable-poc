@@ -25,6 +25,8 @@ provider:
   runtime: python3.8
   stage: dev
   region: us-east-1
+  environment: 
+    BUCKET: source-b-bucket
   iam:
     role:
       statements:
@@ -34,7 +36,7 @@ provider:
             - s3:GetObject
             - s3:CreateBucket
           Resource:
-            -  "arn:aws:s3:::source-b-bucket"
+            -  "arn:aws:s3:::${self:provider.environment.BUCKET}"
  
 
 # you can overwrite defaults here
