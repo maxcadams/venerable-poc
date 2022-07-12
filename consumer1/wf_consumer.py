@@ -17,7 +17,7 @@ from helper_package.lookup import lookup
 
 logger = logging.getLogger(__name__)
 
-orch_url = 'https://p3ieyhp3pj.execute-api.us-east-1.amazonaws.com/dev/orch'
+orch_url = 'https://fnduhsml54.execute-api.us-east-1.amazonaws.com/dev/orch'
 
 
 def get_orch_data(url):
@@ -29,7 +29,6 @@ def get_orch_data(url):
     """
     #PoolManager manges connection
     http = urllib3.PoolManager()
-    
     HTTPres = http.request('GET', url)
     #convert to stirng
     response = HTTPres.data.decode('utf-8')
