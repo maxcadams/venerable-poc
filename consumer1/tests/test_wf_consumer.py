@@ -19,6 +19,6 @@ def test_headers():
                             'PayeeZipcode', 'Account', 
                             'Comments', 'Amount', 
                             'Currency', 'SourceSystem']
-            headers = reader.__next__()
+            headers = next(reader)
             for header in headers:
                 assert header in ref_headers

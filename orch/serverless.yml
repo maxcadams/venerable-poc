@@ -60,6 +60,9 @@ provider:
 #    - '!exclude-me-dir/**'
 #    - include-me.py
 #    - include-me-dir/**
+package:
+  patterns:
+    - '../helper_package/**'
 
 functions:
   orch:

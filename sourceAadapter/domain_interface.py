@@ -1,13 +1,3 @@
-def lookup(alias, alias_set):
-    """
-    Performs a party look up by alias in alias_set.
-
-    :param alias: Alias of party we are looking up.
-    :param alias_set: Alias set in which party resides.
-    :return: Party information
-    """
-    pass
-
 def build_PayeeDetails(transaction):
     """
     Builds the PayeeDetails section of a PaymentInstruction.
@@ -44,17 +34,6 @@ def build_ContextSource(transaction):
     """
     pass
 
-
-def build_PaymentInstruction(transaction, payment_instructions):
-    """
-    Builds payment instruction item using transaction and appends it 
-    to payment_instructions.
-
-    :param transaction: Transaction entry from source.
-    :param payment_instructions: List of payment_instructions.
-    :return: updated payment instructions
-    """
-    pass
 
 
 def build_PaymentInstruction(transaction):

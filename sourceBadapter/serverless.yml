@@ -32,13 +32,17 @@ provider:
       statements:
         - Effect: Allow
           Action: 
-            - s3:PutObject
             - s3:GetObject
-            - s3:CreateBucket
+            - s3:PutObject
+            - s3:PutObjectTagging
           Resource:
             -  "arn:aws:s3:::${self:provider.environment.BUCKET}"
+            -  "arn:aws:s3:::${self:provider.environment.BUCKET}/*"
  
-
+package:
+  patterns:
+    - '../helper_package/**'
+    - '!output.json'
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1
@@ -66,8 +70,7 @@ provider:
 #    variable1: value1
 
 # you can add packaging information here
-#package:
-#  patterns:
+
 #    - '!exclude-me.py'
 #    - '!exclude-me-dir/**'
 #    - include-me.py

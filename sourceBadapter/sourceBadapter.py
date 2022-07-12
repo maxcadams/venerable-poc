@@ -1,17 +1,14 @@
-from asyncore import read
 import json
 import boto3
 import os
 import csv
 import sys
-import pprint
+from decimal import Decimal 
 import uuid
 
-from regex import D
-
 sys.path.append('..')
-from lookup_package.lookup import lookup
-
+from helper_package.lookup import lookup
+from helper_package import decimalencoder
 
 
 s3 = boto3.resource('s3')
@@ -65,7 +62,7 @@ def build_PaymentInfo(transaction):
     
     payment = {}
     payment['PaymentMechanism'] = 'CHECK' #hardcoded to CHECK bc all entries are TransType CHK
-    payment['CurrencyAmount'] = transaction['Amount'][1:] #don't want the '$'
+    payment['CurrencyAmount'] = transaction['Amount'].strip()[1:] #don't want the '$' and gets rid of trailing whitespace
     payment['CurrencyInstrument'] = lookup(alias=None, 
     alias_set=None, lookup_file='Instrument.json')
     
@@ -171,7 +168,7 @@ def build_domain(transactions : list):
 
     return final
 
-def convert(file_name):
+def convert(contents):
     """
     Converts csv file data to a list of dictionaries. 
     Headers are keys for the dictionaries while rows of 
@@ -181,45 +178,55 @@ def convert(file_name):
     :return: List of dictionaries corresponding with data from input file.
     """
     pi_list = []
-    with open(file_name) as file:
-        
-        reader = csv.reader(file)
-        headers = next(reader)
-        
-        for row in reader:
-            pi = {}
-            for i in range(len(headers)):
-                pi[headers[i]] = row[i]
-            
-
-
-            pi_list.append(pi)
+    
+    reader = csv.reader(contents)
+    headers = next(reader)
+    
+    for row in reader:
+        pi = {}
+        #assume len(headers) == len(row)
+        for i in range(len(headers)):
+            pi[headers[i]] = row[i]
+    
+        pi_list.append(pi)
 
     return pi_list
             
 
 def adapt(event, context):
     
-    bucket = s3.Bucket(os.environ['BUCKET'])
-    
-    transactions = convert('sourceB.csv')    
+    obj = s3.Object(os.environ['BUCKET'], 'sourceB.csv')
+    # gets data from 'sourceB.csv' and converts it to lists so convert fn
+    # can iterate thru it with the csv reader
+    contents = obj.get()['Body'].read().decode('utf-8').split('\r\n')
+
+    transactions = convert(contents)
+    domain = build_domain(transactions)    
 
     response = {
         "statusCode": 200,
-        "body": json.dumps()
+        "body": json.dumps(domain, cls=decimalencoder.DecimalEncoder)
+        
     }
 
     return response
 
 
 if __name__ == '__main__':
-
     # print(sys.path)
-    transactions : list = convert('sourceB.csv')
+    obj = s3.Object('source-b-bucket', 'sourceB.csv')
+    contents = obj.get()['Body'].read().decode('utf-8').split('\r\n')
+    transactions : list = convert(contents)
     domain : dict = build_domain(transactions)
-    #pprint.pprint(convert('sourceB.csv'))
-    # with open('sourceB.json', 'w') as output:
+    # #pprint.pprint(convert('sourceB.csv'))
+    # with open('sourceBlocal.json', 'w') as output:
     #     json.dump(transactions, output)
 
     with open('output.json', 'w') as output:
+        response =  adapt(None, None)
         json.dump(domain, output)
+    # obj = s3.Object('source-b-bucket', 'sourceB.csv')
+    # string = obj.get()['Body'].read().decode('utf-8')
+    # reader = csv.reader(string.split('\r\n'))
+    # for row in reader:
+    #     print(row)

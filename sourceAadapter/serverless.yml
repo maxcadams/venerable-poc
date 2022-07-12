@@ -41,6 +41,10 @@ provider:
           Resource: 
             -  "arn:aws:dynamodb:us-east-1:706797746903:table/${self:provider.environment.TABLE}"
 
+package:
+  patterns:
+    - '../helper_package/**'
+
 functions:
   adapt:
     handler: sourceAadapter.adapt

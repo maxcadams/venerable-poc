@@ -40,10 +40,10 @@
                             "AccountName": "WellsFargo VIAC Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220315",
-                        "PaymentTransactionId": "f1b6e278-0720-4980-9e47-4756b97a1e85",
+                        "PaymentTransactionId": "2c9b4619-d407-4062-a70d-fb1a416931bb",
                         "Payment": {
                             "PaymentMechanism": "CHECK",
-                            "CurrencyAmount": "$22,164.00 ",
+                            "CurrencyAmount": "22,164.00",
                             "CurrencyInstrument": {
                                 "SymbolFamily": "Currencies",
                                 "Symbol": "USD",
@@ -106,10 +106,10 @@
                             "AccountName": "WellsFargo VIAC Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220315",
-                        "PaymentTransactionId": "36521506-fb4d-4173-9cc3-20815a2f771e",
+                        "PaymentTransactionId": "211632a8-cc2b-4171-bbd5-473dbfb62e84",
                         "Payment": {
                             "PaymentMechanism": "CHECK",
-                            "CurrencyAmount": "$3,210.00 ",
+                            "CurrencyAmount": "3,210.00",
                             "CurrencyInstrument": {
                                 "SymbolFamily": "Currencies",
                                 "Symbol": "USD",
@@ -172,10 +172,10 @@
                             "AccountName": "WellsFargo VIAC Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220315",
-                        "PaymentTransactionId": "18387782-72fc-47ed-8aeb-d56bea4d11a4",
+                        "PaymentTransactionId": "e23765a9-0c41-48d6-9fb4-ed1497d2b2b9",
                         "Payment": {
                             "PaymentMechanism": "CHECK",
-                            "CurrencyAmount": "$1,699.00 ",
+                            "CurrencyAmount": "1,699.00",
                             "CurrencyInstrument": {
                                 "SymbolFamily": "Currencies",
                                 "Symbol": "USD",
@@ -238,10 +238,10 @@
                             "AccountName": "WellsFargo VIAC Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220315",
-                        "PaymentTransactionId": "d9a23b71-f482-47b4-a44f-2b85f6dc04cc",
+                        "PaymentTransactionId": "40194575-f690-49b8-8bcc-ff23d493d760",
                         "Payment": {
                             "PaymentMechanism": "CHECK",
-                            "CurrencyAmount": "$185.20 ",
+                            "CurrencyAmount": "185.20",
                             "CurrencyInstrument": {
                                 "SymbolFamily": "Currencies",
                                 "Symbol": "USD",
@@ -304,10 +304,10 @@
                             "AccountName": "WellsFargo VIAC Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220315",
-                        "PaymentTransactionId": "f896a69f-5c2f-43ff-8eb8-63fe8ebdd121",
+                        "PaymentTransactionId": "0cac5aa1-f514-4c2c-a9f5-5d6517ea9273",
                         "Payment": {
                             "PaymentMechanism": "CHECK",
-                            "CurrencyAmount": "$1,692.00 ",
+                            "CurrencyAmount": "1,692.00",
                             "CurrencyInstrument": {
                                 "SymbolFamily": "Currencies",
                                 "Symbol": "USD",
@@ -370,10 +370,10 @@
                             "AccountName": "WellsFargo VIAC Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220315",
-                        "PaymentTransactionId": "5552b5a3-2430-4518-bd9f-82e093864f9e",
+                        "PaymentTransactionId": "bbed2bab-f353-4d38-9edd-8336ff75b192",
                         "Payment": {
                             "PaymentMechanism": "CHECK",
-                            "CurrencyAmount": "$210.00 ",
+                            "CurrencyAmount": "210.00",
                             "CurrencyInstrument": {
                                 "SymbolFamily": "Currencies",
                                 "Symbol": "USD",
@@ -435,10 +435,10 @@
                             "AccountName": "WellsFargo VIAC Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220315",
-                        "PaymentTransactionId": "a99645ba-7a30-40d1-8815-b95def3cd0fb",
+                        "PaymentTransactionId": "c0889f3a-3c09-416f-a0d0-1f4aefe228d4",
                         "Payment": {
                             "PaymentMechanism": "CHECK",
-                            "CurrencyAmount": "$1,291.00 ",
+                            "CurrencyAmount": "1,291.00",
                             "CurrencyInstrument": {
                                 "SymbolFamily": "Currencies",
                                 "Symbol": "USD",
@@ -501,10 +501,10 @@
                             "AccountName": "WellsFargo VIAC Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220315",
-                        "PaymentTransactionId": "7091810a-8d1f-4ad1-8cbc-db699155da74",
+                        "PaymentTransactionId": "899fa8a6-66b9-44d2-83bc-d66ba8d9e988",
                         "Payment": {
                             "PaymentMechanism": "CHECK",
-                            "CurrencyAmount": "$25,195.00 ",
+                            "CurrencyAmount": "25,195.00",
                             "CurrencyInstrument": {
                                 "SymbolFamily": "Currencies",
                                 "Symbol": "USD",

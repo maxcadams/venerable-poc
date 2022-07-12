@@ -6,11 +6,14 @@ Author: Max Adams
 """
 
 import json
-import decimalencoder
 import os
 import boto3
 from decimal import Decimal
-from lookup_package.lookup import lookup
+import sys
+
+sys.path.append('..')
+from helper_package.lookup import lookup
+from helper_package import decimalencoder
 
 dynamodb = boto3.resource('dynamodb')
 
@@ -104,7 +107,7 @@ def build_ContextSource(transaction):
     # need to decode Enum(WC=>OFFICE, DSM=>SITE)
     ContextSource['TriggeringPaymentEventLocation'] = 'OFFICE' if transaction['Site'] == 'WC' else 'SITE'
     ContextSource['TriggeringPaymentEventID'] = transaction['ClaimNum']
-    ContextSource['TriggeringPaymentDatetime'] = None #ask about this
+    ContextSource['TriggeringPaymentEventDatetime'] = None #ask about this
     ContextSource['TriggeringPaymentEventBatchCycleId'] = transaction['BatchId']
     ContextSource['TriggeringPaymentEventBatchCycleDatetime'] = transaction['BatchDate']
     

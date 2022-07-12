@@ -1,5 +1,6 @@
 import json
 from decimal import Decimal
+import sys
 
 def lookup(alias, alias_set, lookup_file):
     """
@@ -10,7 +11,14 @@ def lookup(alias, alias_set, lookup_file):
     :param lookup_file: File name of json (look up db)
     :return: Party information
     """
-    with open(f'../lookup_package/parties/{lookup_file}') as file:
+    if (sys.executable == '/var/lang/bin/python3.8'):
+        dir_path = f'helper_package/parties/{lookup_file}'
+    else:
+        dir_path = f'../helper_package/parties/{lookup_file}'
+
+
+              # ../ if locally ran .. se how we can change this
+    with open(dir_path) as file:
         file_content = json.load(file, parse_float=Decimal)
 
         if (lookup_file == 'Instrument.json'):

@@ -1,5 +1,5 @@
 """
-Test sourceA adapter logic. 
+Test sourceB adapter logic. 
 To test, we only check the keys, not the data.
 
 Author: Max Adams
@@ -7,58 +7,26 @@ Author: Max Adams
 Note: In test functions, _wf suffix signifies Wells Fargo specific tests.
 """
 
-
 import pytest
 
-from sourceAadapter import build_PaymentInstruction
+from sourceBadapter import convert, build_domain
 
+with open('tests/sourceB_test.csv') as file:
+    contents = file.read().split('\n')
+    transactions = convert(contents)
+    domain = build_domain(transactions)
+    
 
-example_data = {
-   "id": "5b288c57-bb42-4e38-b42c-afbe13816dab",
-   "SourceId": "GARWIN",
-   "CycleDate": "20220315",
-   "BatchDate": "20220314",
-   "BatchId": 123591,
-   "BatchSeq": 1,
-   "Site": "WC",
-   "TransType": "CHK",
-   "TransactionCd": "DTH",
-   "ContractNum": "15681-61-2062",
-   "Amount": "$15,231.36",
-   "ClaimNum": 320695,
-   "CompanyId": "VIAC",
-   "CostCenter": 10062,
-   "AnnuitantName": "",
-   "AnnuitantStreet": "",
-   "AnnuitantCity": "",
-   "AnnuitantState": "",
-   "AnnuitantZipcode": None,
-   "BeneficiaryName": "Bill Suthington",
-   "BeneficiaryStreet": "72 Walnut Street",
-   "BeneficiaryCity": "West Deptford",
-   "BeneficiaryState": "NJ",
-   "BeneficiaryZipcode": 8096,
-   "OtherPayeeName": "",
-   "OtherPayeeStreet": "",
-   "OtherPayeeCity": "",
-   "OtherPayeeState": "",
-   "OtherPayeeZipcode": None,
-   "SpeedChart": 22,
-   "Message": "Death Interest details for this disbursement are shown below",
-   "IssuerBankName": "Wells Fargo",
-   "IssuerBankABA": 21200025,
-   "IssuerBankAccount": "WFPMTS"
-  }
+pi = domain['Transactions']['PaymentInstructions'][0]['PaymentInstruction']
 
-pi_outter = build_PaymentInstruction(example_data)
 
 def test_outer_node():
     """
-    Checks if 'PaymentInstruction' node exists
+    Checks if 'PaymentInstruction' node exists along with 'Transactions'
     """
-    assert 'PaymentInstruction' in pi_outter.keys() 
+    assert 'Transactions' in domain.keys()
+    assert 'PaymentInstructions' in domain['Transactions'].keys() 
 
-pi = pi_outter['PaymentInstruction']
 
 def test_payment_instruction_nodes_wf():
     """

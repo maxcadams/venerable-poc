@@ -1,0 +1,41 @@
+{
+    "BankAccounts": {
+        "VIACPMT": { 
+            "AccountId" : "2726219", 
+            "AccountAliasSet" : "BankAccounts",
+            "AccountAlias" : "VIACPMT", 
+            "AccountName": "VIAC Payments" },
+        "WFPMTS": { 
+            "AccountId" : "1651619", 
+            "AccountAliasSet" : "BankAccounts",
+            "AccountAlias" : "WFPMTS",
+            "AccountName" : "WellsFargo VIAC Payments" },
+        "WFDIST": {
+            "AccountId" : "1651619", 
+            "AccountAliasSet" : "BankAccounts",
+            "AccountAlias" : "WFDIST",
+            "AccountName" : "WellsFargo VIAC Payments" }
+    },
+    "WellsFargoAccounts": {
+        "VenerableCheckAccount": { 
+            "AccountId" : "1651619", 
+            "AccountAliasSet" : "WellsFargoAccounts",
+            "AccountAlias" : "VenerableCheckAccount", 
+            "AccountName": "WellsFargo VIAC Payments" 
+        }
+    },
+    "VenerableAccounts": {
+        "VIAC": { 
+            "AccountId" : "85190315-5816-7V45-9140-F626AI8S2N0L", 
+            "AccountAliasSet" : "VenerableAccounts", 
+            "AccountAlias": "VIAC", 
+            "AccountName" : "Primary Disbursements" 
+        },
+        "DISB": { 
+            "AccountId" : "72844901-4351-4A55-8846-B326AE3D2E0F", 
+            "AccountAliasSet" : "VenerableAccounts", 
+            "AccountAlias": "DISB", 
+            "AccountName": "Primary Disbursements" 
+        }
+    }
+}
