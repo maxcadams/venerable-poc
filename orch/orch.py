@@ -4,9 +4,8 @@ import sys
 sys.path.append('..')
 from helper_package import decimalencoder
 
-urls = ['https://b9h0jczcbc.execute-api.us-east-1.amazonaws.com/dev/sourceA', 
-        'https://qh2epwt28g.execute-api.us-east-1.amazonaws.com/dev/sourceB']
-# turn into a list when we have multiple urls
+with open('adapter_urls.txt') as file:
+    urls = [line[line.index('h'):].rstrip('\n') for line in file.readlines()]
 
 def build_domain(pi_list):
     domain = { "Transactions": {
@@ -21,7 +20,6 @@ def get_PaymentInstructions(url, http):
     body_str = res.data.decode('utf-8')
     body_dict = json.loads(body_str)
     return body_dict['Transactions']['PaymentInstructions']
-
 
 def orch(event, context):
     """
@@ -43,6 +41,3 @@ def orch(event, context):
     }
 
     return response
-
-# note: with multiple adapter outputs, want to put together the sections, not have
-# a list of json bodies (kinda like stack each section)

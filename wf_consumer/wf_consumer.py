@@ -17,8 +17,9 @@ from helper_package.lookup import lookup
 
 logger = logging.getLogger(__name__)
 
-orch_url = 'https://fnduhsml54.execute-api.us-east-1.amazonaws.com/dev/orch'
-
+with open('orch_url.txt') as file:
+    line = file.readline()
+    orch_url = line[line.index('h'):].rstrip('\n')
 
 def get_orch_data(url):
     """

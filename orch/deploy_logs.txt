@@ -1,0 +1,5 @@
+
+dashboard: https://app.serverless.com/madams/apps/orch/orch/dev/us-east-1
+endpoint: GET - https://okjq6k56m6.execute-api.us-east-1.amazonaws.com/dev/orch
+functions:
+  orch: orch-dev-orch (89 kB)
