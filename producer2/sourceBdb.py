@@ -1,8 +1,10 @@
 """
-Source B DB interface for Venerable POC.
-Summmer 2022
+For Venerable POC, Summer 2022
 
-author: Max Adams
+Creates s3 bucket that holds csv file that
+holds sourceB data.
+
+Author: Max Adams
 """
 
 import boto3

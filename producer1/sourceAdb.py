@@ -1,8 +1,10 @@
 """
-Source A DB interface for Venerable POC
-Summer 2022
+For Venerable POC, Summer 2022
 
-author: Max Adams
+Creates dynamodb table that contains
+sourceA data.
+
+Author: Max Adams
 """
 
 from decimal import Decimal
@@ -42,11 +44,10 @@ class SourceA:
                 ],
                 ProvisionedThroughput={'ReadCapacityUnits': 20, 'WriteCapacityUnits': 20})
 
-            print("Creating table...")    
             self.table.wait_until_exists()
         except ClientError as err:
             if(err.response['Error']['Code'] == 'ResourceInUseException'):
-                print("Table was already created! ... continuing process")
+                logger.info("Table was already created! ... continuing process")
                 self.table = self.dyn_resource.Table(table_name)
             else:
                 logger.error(
@@ -54,8 +55,6 @@ class SourceA:
                 err.response['Error']['Code'], err.response['Error']['Message'])
                 raise
 
-        
-        print("Table created!")
         return self.table
 
 
@@ -104,11 +103,9 @@ class SourceA:
         :param file_name: file name of json object with sample data
         """
         transactions = self.get_transaction_data(file_name)
-        print("Adding transaction data...")
         for transaction in transactions:
             self.add_transaction(transaction)
 
-        print("Transaction data added!")
 
     def scan_transactions(self):
         """
@@ -122,10 +119,8 @@ class SourceA:
         Deletes table.
         """
         try:
-            print("Deleting tables...")
             self.table.delete()
             self.table = None
-            print("Table deleted.")
         except ClientError as err:
             logger.error(
                 "Couldn't delete tables. Here's why: %s: %s",
@@ -133,20 +128,35 @@ class SourceA:
             raise
 
 def main():
+    """
+    Main routine for dynamodb table for sourceA transactions. 
+
+    Creates table, then adds data.
+    Runs prompt that leaves table up until user decides to stop using.
+    """
+    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
     dyn = boto3.resource('dynamodb')
     sourceA = SourceA(dyn)
+    table_name = 'sourceA-transactions'
 
-    sourceA.create_table('sourceA-transactions')
-    sourceA.add_transaction_data('sourceA.json')
+    logger.info("Creating table with table name '%s'.", table_name)
+    sourceA.create_table(table_name)
+    logger.info("Table '%s' created.", table_name)
+
+    file_name = 'sourceA.json'
+    logger.info("Adding transactions form '%s' to table '%s'.", file_name, table_name)
+    sourceA.add_transaction_data(file_name)
+    logger.info("Transactions added to table '%s'.", table_name)
 
     while True:
         msg = input("Say 'finish' to stop and delete tables, 'scan' to scan both tables: ")
         if msg == 'finish':
+            logger.info("Deleting table '%s' ...", table_name)
             sourceA.delete_table()
+            logger.info("Table '%s' deleted.", table_name)
             break
         elif msg == 'scan':
             pprint.pprint(sourceA.scan_transactions())
-
 
 if __name__ == '__main__':
     main()

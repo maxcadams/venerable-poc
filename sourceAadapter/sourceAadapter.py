@@ -1,6 +1,11 @@
 """
+For Venerable POC, Summer 2022
+
 Contains lambda handler and helper functions
-for translating sourceA data to domain model. 
+for sourceA data.
+
+Pulls data from dynamodb table and adapts 
+data to domain model.
 
 Author: Max Adams
 """
@@ -8,7 +13,6 @@ Author: Max Adams
 import json
 import os
 import boto3
-from decimal import Decimal
 import sys
 
 sys.path.append('..')
@@ -16,7 +20,6 @@ from helper_package.lookup import lookup
 from helper_package import decimalencoder
 
 dynamodb = boto3.resource('dynamodb')
-
 
 def build_PayeeDetails(transaction):
     """
@@ -45,8 +48,6 @@ def build_PayeeDetails(transaction):
     PayeeDetails['PaymentAnnotation'] = transaction['Message']
 
     return PayeeDetails        
-    
-
 
 def build_PaymentInfo(transaction):
     """
@@ -73,10 +74,6 @@ def build_PaymentInfo(transaction):
 
     return PaymentInfo
 
-
-    
-
-
 def build_VLP(transaction):
     """
     Builds the VenerableLedgerProcessing section of a PaymentInstruction.
@@ -94,7 +91,6 @@ def build_VLP(transaction):
     
     return vlp
     
-
 def build_ContextSource(transaction):
     """
     Builds the ContextSource section of a PaymentInstruction. 
@@ -134,10 +130,6 @@ def build_ContextSource(transaction):
     
     return ContextSource
     
-
-    
-     
-
 def build_PaymentInstruction(transaction):
     """
     Builds payment instruction item using transaction and appends it 
@@ -170,15 +162,20 @@ def build_domain(transactions : list):
             'PaymentInstructions': []
         }
     }
-    
+
     # builds list using list comprehension
     final['Transactions']['PaymentInstructions'] = [ build_PaymentInstruction(transaction) for transaction in transactions ]
 
     return final
 
-
 def adapt(event, context):
-    
+    """
+    Lambda function for aws.
+
+    Pulls data from dynamodb, then builds 
+    domain model.
+    """
+
     table = dynamodb.Table(os.environ['TABLE'])
 
     table_scan = table.scan()
@@ -192,13 +189,3 @@ def adapt(event, context):
     }
 
     return response
-
-if __name__ == '__main__':
-    with open('sourceA.json') as file:
-        entries = json.load(file, parse_float=Decimal)
-        
-    domain = build_domain(entries)
-    
-    with open('output.json', 'w') as output:
-        json.dump(domain, output)
-

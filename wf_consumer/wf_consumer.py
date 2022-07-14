@@ -1,4 +1,13 @@
+"""
+For Venerable POC, Summer 2022
 
+Script that translates data from calling orch
+to a WellsFargo model and adds to csv file that is 
+locally stored into 'wf_files/{file_name}  and also
+stored into an s3 bucket.
+
+Author: Max Adams
+"""
 
 import json
 import csv
@@ -17,6 +26,7 @@ from helper_package.lookup import lookup
 
 logger = logging.getLogger(__name__)
 
+# gets orch endpoint
 with open('orch_url.txt') as file:
     line = file.readline()
     orch_url = line[line.index('h'):].rstrip('\n')
@@ -31,7 +41,7 @@ def get_orch_data(url):
     #PoolManager manges connection
     http = urllib3.PoolManager()
     HTTPres = http.request('GET', url)
-    #convert to stirng
+    #convert to string
     response = HTTPres.data.decode('utf-8')
     body = json.loads(response)
 
@@ -50,7 +60,6 @@ def create_file():
 
     return open(file_name, 'w+', encoding='UTF8', newline='')
 
-#see if you can seperate create_file out of this function or redefine this function
 def add_data(transactions, file):
     """
     Creates file and add data from transactions to csv file in one batch
@@ -103,7 +112,7 @@ def create_bucket(s3, bucket_name):
     try:
         s3.create_bucket(Bucket=bucket_name)
     except ClientError as error:
-            logger.exception(
+            logger.error(
                 "Couldn't create bucket named '%s'",
                 bucket_name)
             raise error
@@ -121,18 +130,25 @@ def delete_bucket(s3, bucket):
             s3.Object(bucket.name, item.key).delete() 
         bucket.delete()
     except ClientError as error:
-            logger.exception(
+            logger.error(
                 "Couldn't delete bucket named '%s'",
                 bucket.name)
             raise error
 
-
 def main():
+    """
+    Main routine. 
+    Creates csv file, adds data from calling orch endpoint,
+    then places into s3 bucket too.
+    """
+    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+
+    logger.info('Creating file...')
     file_name = ''
     with create_file() as file:
         add_data(get_orch_data(orch_url), file)
         file_name = file.name
-    
+
     #creates new dir and moves file into it
     new_dir = r'wf_files'
     current_directory = os.getcwd()
@@ -140,20 +156,23 @@ def main():
     if not os.path.exists(final_directory):
         os.makedirs(final_directory)
     os.replace(f"{current_directory}/{file_name}", f"{final_directory}/{file_name}")
-
+    logger.info("File '%s' created. Moved to directory '%s'", file_name, new_dir)
+ 
+    logger.info("Creating s3 bucket...")
     #creates s3 bucket
     s3 = boto3.resource('s3')
     bucket_name = 'wf-consumer-bucket-' + str(uuid.uuid4())
     bucket = create_bucket(s3, bucket_name)
     bucket.upload_file(f'{new_dir}/{file_name}', f'{file_name}')
+    logger.info("File with obj-key '%s' upload to s3 bucket '%s'. ", file_name, bucket_name)
 
     while(True):
         prompt = input("Type 'finish' to delete bucket and end process: ")
         if prompt == 'finish':
-            print('Deleting bucket...')
+            logger.info('Deleting bucket...')
             break
     delete_bucket(s3, bucket)
-    print('Bucket deleted')
+    logger.info("Bucket '%s' deleted.", bucket_name)
     
 if __name__ == '__main__': 
     main()

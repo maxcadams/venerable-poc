@@ -1,15 +1,25 @@
+"""
+For Venerable POC, Summer 2022
+
+Contains lambda handler and helper functions
+for sourceB data.
+
+Pulls data from csv file in s3 bucket and adapts
+data to domain model.
+
+Author: Max Adams
+"""
+
 import json
 import boto3
 import os
 import csv
 import sys
-from decimal import Decimal 
 import uuid
 
 sys.path.append('..')
 from helper_package.lookup import lookup
 from helper_package import decimalencoder
-
 
 s3 = boto3.resource('s3')
 
@@ -87,7 +97,6 @@ def build_VLP(transaction):
     
     return vlp
     
-
 def build_ContextSource(transaction):
     """
     Builds the ContextSource section of a PaymentInstruction. 
@@ -127,9 +136,6 @@ def build_ContextSource(transaction):
     
     return ContextSource
     
-    
-
-
 def build_PaymentInstruction(transaction):
     """
     Builds payment instruction item using transaction and appends it 
@@ -192,8 +198,14 @@ def convert(contents):
 
     return pi_list
             
-
 def adapt(event, context):
+    """
+    Lambda function for aws. 
+    
+    Gets data from csv file in s3 bucket,
+    converts data to python dict,
+    then builds domain model.
+    """
     
     obj = s3.Object(os.environ['BUCKET'], 'sourceB.csv')
     # gets data from 'sourceB.csv' and converts it to lists so convert fn
@@ -210,23 +222,3 @@ def adapt(event, context):
     }
 
     return response
-
-
-if __name__ == '__main__':
-    # print(sys.path)
-    obj = s3.Object('source-b-bucket', 'sourceB.csv')
-    contents = obj.get()['Body'].read().decode('utf-8').split('\r\n')
-    transactions : list = convert(contents)
-    domain : dict = build_domain(transactions)
-    # #pprint.pprint(convert('sourceB.csv'))
-    # with open('sourceBlocal.json', 'w') as output:
-    #     json.dump(transactions, output)
-
-    with open('output.json', 'w') as output:
-        response =  adapt(None, None)
-        json.dump(domain, output)
-    # obj = s3.Object('source-b-bucket', 'sourceB.csv')
-    # string = obj.get()['Body'].read().decode('utf-8')
-    # reader = csv.reader(string.split('\r\n'))
-    # for row in reader:
-    #     print(row)
