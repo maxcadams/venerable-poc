@@ -1,4 +1,0 @@
-
-endpoint: GET - https://k650mdlnkj.execute-api.us-east-1.amazonaws.com/dev/sourceA
-functions:
-  adapt: sourceAadapter-dev-adapt (16 kB)

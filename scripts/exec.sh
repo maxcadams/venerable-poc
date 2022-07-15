@@ -5,6 +5,7 @@ execute () {
     cat deploy_logs.txt | grep "endpoint:" | xargs >> ../api_endpoint.txt;
 }
 
+cd ../src;
 # go to sourceAadapter and deploy
 cd sourceAadapter;
 execute

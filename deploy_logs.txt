@@ -1,0 +1,2 @@
+Error:
+This command can only be run in a Serverless service directory. Make sure to reference a valid config file in the current working directory if you're using a custom config file
