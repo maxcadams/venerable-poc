@@ -1,1 +1,1 @@
-endpoint: GET - https://3ro4g602n7.execute-api.us-east-1.amazonaws.com/dev/orch
+endpoint: GET - https://y5b8vgvzu7.execute-api.us-east-1.amazonaws.com/dev/orch
