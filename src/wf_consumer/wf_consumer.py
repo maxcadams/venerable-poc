@@ -15,7 +15,6 @@ import logging
 import os
 import random
 import sys
-import uuid
 from datetime import date, datetime
 
 import boto3
@@ -178,7 +177,7 @@ def main():
     logger.info("Creating s3 bucket...")
     # creates s3 bucket
     s3 = boto3.resource("s3")
-    bucket_name = "wf-consumer-bucket-" + str(uuid.uuid4())
+    bucket_name = "wf-consumer-bucket"
     bucket = create_bucket(s3, bucket_name)
     bucket.upload_file(f"{new_dir}/{file_name}", f"{file_name}")
     logger.info("File with obj-key '%s' upload to s3 bucket '%s'. ", file_name, bucket_name)
