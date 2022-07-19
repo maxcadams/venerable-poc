@@ -12,7 +12,6 @@ import pytest
 
 from sourceAadapter import build_PaymentInstruction
 
-
 example_data = {
    "id": "5b288c57-bb42-4e38-b42c-afbe13816dab",
    "SourceId": "GARWIN",

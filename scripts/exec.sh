@@ -9,7 +9,7 @@ cd ../src;
 # go to sourceAadapter and deploy
 if [ ! -s orch/adapter_urls.txt ]
 then
-  echo 'in here'
+  # echo 'in here'
   cd sourceAadapter;
   execute
   cat deploy_logs.txt | grep "endpoint:" | xargs > ../orch/adapter_urls.txt;

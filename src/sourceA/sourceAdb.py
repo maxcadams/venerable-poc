@@ -7,56 +7,60 @@ sourceA data.
 Author: Max Adams
 """
 
-from decimal import Decimal
 import json
 import logging
+import pprint
+from decimal import Decimal
+
 import boto3
 from botocore.exceptions import ClientError
-import pprint
 
 logger = logging.getLogger(__name__)
+
 
 class SourceA:
     """
     Encapsulates data for source A into one table.
-    
+
     """
+
     def __init__(self, dyn_resource):
         self.dyn_resource = dyn_resource
         self.table = None
 
     def create_table(self, table_name):
         """
-        Creates Amazon DynamoDB table stores transactions data. 
+        Creates Amazon DynamoDB table stores transactions data.
         Stores it in the table field of class.
 
         :param table_name: Name of table we are creating.
         :return: table object
         """
-        try: #ask ab key schema
+        try:  # ask ab key schema
             self.table = self.dyn_resource.create_table(
                 TableName=table_name,
                 KeySchema=[
-                    {'AttributeName': 'id', 'KeyType': 'HASH'} # partition key, subject to change
+                    {"AttributeName": "id", "KeyType": "HASH"}  # partition key, subject to change
                 ],
-                AttributeDefinitions=[
-                    {'AttributeName': 'id', 'AttributeType': 'S'}
-                ],
-                ProvisionedThroughput={'ReadCapacityUnits': 20, 'WriteCapacityUnits': 20})
+                AttributeDefinitions=[{"AttributeName": "id", "AttributeType": "S"}],
+                ProvisionedThroughput={"ReadCapacityUnits": 20, "WriteCapacityUnits": 20},
+            )
 
             self.table.wait_until_exists()
         except ClientError as err:
-            if(err.response['Error']['Code'] == 'ResourceInUseException'):
+            if err.response["Error"]["Code"] == "ResourceInUseException":
                 logger.info("Table was already created! ... continuing process")
                 self.table = self.dyn_resource.Table(table_name)
             else:
                 logger.error(
-                "Couldn't create table %s. Here's why: %s: %s", table_name,
-                err.response['Error']['Code'], err.response['Error']['Message'])
+                    "Couldn't create table %s. Here's why: %s: %s",
+                    table_name,
+                    err.response["Error"]["Code"],
+                    err.response["Error"]["Message"],
+                )
                 raise
 
         return self.table
-
 
     def add_transaction(self, transaction):
         """
@@ -67,18 +71,19 @@ class SourceA:
         """
 
         try:
-            response = self.table.put_item(
-                Item=transaction
-            )
+            response = self.table.put_item(Item=transaction)
         except ClientError as err:
             logger.error(
                 "Couldn't update transaction %d to table %s. Here's why: %s: %s",
-                transaction['id'], self.table.name,
-                err.response['Error']['Code'], err.response['Error']['Message'])
+                transaction["id"],
+                self.table.name,
+                err.response["Error"]["Code"],
+                err.response["Error"]["Message"],
+            )
             raise
 
         return response
-    
+
     def get_transaction_data(self, file_name):
         """
         Takes in json object filename, converts to list of dictionaries.
@@ -93,7 +98,7 @@ class SourceA:
         except FileNotFoundError:
             logger.error(f"File {file_name} not found.")
             raise
-        
+
         return transaction_data
 
     def add_transaction_data(self, file_name):
@@ -106,14 +111,13 @@ class SourceA:
         for transaction in transactions:
             self.add_transaction(transaction)
 
-
     def scan_transactions(self):
         """
         Returns list of items in table
         """
         response = self.table.scan()
-        return response['Items']
-    
+        return response["Items"]
+
     def delete_table(self):
         """
         Deletes table.
@@ -124,39 +128,47 @@ class SourceA:
         except ClientError as err:
             logger.error(
                 "Couldn't delete tables. Here's why: %s: %s",
-                err.response['Error']['Code'], err.response['Error']['Message'])
+                err.response["Error"]["Code"],
+                err.response["Error"]["Message"],
+            )
             raise
+
 
 def main():
     """
-    Main routine for dynamodb table for sourceA transactions. 
+    Main routine for dynamodb table for sourceA transactions.
 
     Creates table, then adds data.
     Runs prompt that leaves table up until user decides to stop using.
     """
-    logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
-    dyn = boto3.resource('dynamodb')
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+    dyn = boto3.resource("dynamodb")
     sourceA = SourceA(dyn)
-    table_name = 'sourceA-transactions'
+    table_name = "sourceA-transactions"
 
     logger.info("Creating table with table name '%s'.", table_name)
     sourceA.create_table(table_name)
     logger.info("Table '%s' created.", table_name)
 
-    file_name = 'sourceA.json'
+    file_name = "sourceA.json"
     logger.info("Adding transactions form '%s' to table '%s'.", file_name, table_name)
     sourceA.add_transaction_data(file_name)
     logger.info("Transactions added to table '%s'.", table_name)
 
     while True:
-        msg = input("Say 'finish' to stop and delete tables, 'scan' to scan both tables: ")
-        if msg == 'finish':
+        msg = input(
+            "Say 'finish' to stop and delete tables, 'scan' to scan both tables, 'exit' to stop without deleting tables: "
+        )
+        if msg == "finish":
             logger.info("Deleting table '%s' ...", table_name)
             sourceA.delete_table()
             logger.info("Table '%s' deleted.", table_name)
             break
-        elif msg == 'scan':
+        elif msg == "scan":
             pprint.pprint(sourceA.scan_transactions())
+        elif msg == "exit":
+            break
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

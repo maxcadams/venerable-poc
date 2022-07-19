@@ -9,7 +9,7 @@ Note: In test functions, _wf suffix signifies Wells Fargo specific tests.
 
 import pytest
 
-from sourceBadapter import convert, build_domain
+from sourceBadapter import build_domain, convert
 
 with open('tests/sourceB_test.csv') as file:
     contents = file.read().split('\n')

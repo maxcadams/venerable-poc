@@ -1,4 +1,4 @@
 
-endpoint: GET - https://lp6bh6em5e.execute-api.us-east-1.amazonaws.com/dev/sourceA
+endpoint: GET - https://pp4zdgjet7.execute-api.us-east-1.amazonaws.com/dev/sourceA
 functions:
-  adapt: sourceAadapter-dev-adapt (16 kB)
+  adapt: sourceAadapter-dev-adapt (15 kB)
