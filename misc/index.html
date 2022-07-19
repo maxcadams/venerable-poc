@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X UA-Compatible" content="IE-edge">
+    <title>My Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<!-- CSS section -->
+
+<style>
+
+body{
+    background-color: rgb(145, 255, 218);
+}
+
+h1{
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: auto auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 50px;
+}
+
+.button{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 2.5%;
+
+}
+
+.button:hover {
+    opacity: 50%;
+}
+
+.data-response{
+    display: block;
+    text-align: center;
+    margin-top: 2.5%;
+}
+
+/*
+.match-container{
+    width: 45%;
+    height: 100%;
+    background:rgb(156, 218, 206);
+    position: sticky;
+    margin-top: 5%;
+    margin-bottom: 3.5%;
+    display: inline-block;
+    margin-right: 1%;
+    margin-left: 3%;
+    border: 10px rgb(156, 218, 206) solid;
+}*/
+
+.match-section{
+    margin: 70px 0 20px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.match-section .matches{
+    display: grid;
+    grid-gap: 32px 20px;
+    grid-template-columns: repeat(2, 2fr);
+}
+
+.match-section .match {
+    position: relative;
+    padding: 40px 10%;
+    border-radius: 20px;
+    background-color: blueviolet;
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    height: 100px;
+}
+
+.match-section .match::after{
+  content: '';
+  width: 90%;
+  height: 50px;
+  position: absolute;
+  bottom: -12px;
+  left: 5%;
+  z-index: -1;
+  opacity: 0.3;
+  border-radius: 20px;
+  background: pink;
+}
+
+.match-section .match-date{
+    font-size: 2rem;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.match-section .match-revenue{
+    font-size: 1rem;
+}
+
+.match-section .match-expense{
+    font-size: 1rem;
+}
+
+</style>
+
+
+
+<!-- HTML SECTION -->
+
+<body>
+
+
+<h1> Webapp </h1>
+
+<button class="button" id="btn">Click me for data</button>
+
+
+<!--
+<div class="match-section">
+    <div class="match">
+        <div class = "match-date">
+            Date:
+        </div>
+        <div class = "match-revenue">Revenue: 100</div>
+        <div class = "match-expense">Expenses: 100</div>
+    </div>
+-->
+
+
+</div>
+
+
+
+
+
+<!-- Javascript section -->
+
+<script>
+
+
+    function print_data(data) {
+        let matches = data['league']['club']['matches']
+        console.log(matches)
+        let match_section = document.createElement('div')
+        match_section.setAttribute('class', 'match-section')
+        document.body.appendChild(match_section)
+
+        for(let i=0; i < matches.length; i++) {
+
+            let match = document.createElement('div');
+            match.setAttribute('class', 'match');
+
+            let match_date = document.createElement("div");
+            match_date.setAttribute('class', 'match-date');
+            match_date.innerHTML = 'Date: '.concat(matches[i]['date']);
+            match.appendChild(match_date)
+
+            let match_rev = document.createElement('div');
+            match_rev.setAttribute('class', 'match-revenue');
+            match_rev.innerHTML = 'Revenue: '.concat(matches[i]['Revenue']);
+            match.appendChild(match_rev);
+
+
+            let match_exp = document.createElement('div');
+            match_exp.setAttribute('class', 'match-expense');
+            match_exp.innerHTML = 'Expenses: '.concat(matches[i]['Expenses']);
+            match.appendChild(match_exp);
+
+            match_section.appendChild(match)
+
+
+            // or
+            /*
+            $('body')
+            .append(JSON.stringify(matches[i]))
+            //.addClass('match-container')
+            */
+        }
+
+    }
+
+    function accessapi() {
+        fetch('https://is1yvle7f1.execute-api.us-east-1.amazonaws.com/dev/orch')
+          .then(response => response.json())
+          .then(data => print_data(data))
+          .catch(error => console.log(error))
+    }
+
+
+
+
+    $("#btn").click ( function () {
+        let respContainer = document.getElementsByClassName('match-section');
+        //console.log(respContainer);
+        if (respContainer.length == 0) {
+            accessapi();
+        }
+    })
+</script>
+
+</html>

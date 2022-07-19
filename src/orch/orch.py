@@ -1,5 +1,5 @@
 """
-For Venerable POC, Summer 2022
+For Venerable POC, Summer 2022.
 
 Orchestrator lambda handler that calls adapter endpoints and aggregates
 data to domain model.
