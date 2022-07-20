@@ -21,5 +21,5 @@ fi
 cd ../orch;
 #cat ../api_endpoint.txt > adapter_urls.txt
 execute
-cat deploy_logs.txt | grep "endpoint:" | xargs > ../wf_consumer/orch_url.txt;
+cat deploy_logs.txt | grep "endpoint:" | xargs > ../consumer/orch_url.txt;
 cd ..

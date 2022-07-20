@@ -1,1 +1,0 @@
-endpoint: GET - https://dd2bhv6qel.execute-api.us-east-1.amazonaws.com/dev/orch

@@ -2,8 +2,8 @@
 For Venerable POC, Summer 2022
 
 Script that translates data from calling orch
-to a WellsFargo model and adds to csv file that is 
-locally stored into 'wf_files/{file_name}  and also
+to a Bank model and adds to csv file that is
+locally stored into 'sheets/{file_name}  and also
 stored into an s3 bucket.
 
 Author: Max Adams
@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 # gets orch endpoint
 with open("orch_url.txt") as file:
     line = file.readline()
-    orch_url = line[line.index("h") :].rstrip("\n")
+    orch_url = line[line.index("h"):].rstrip("\n")
 
 
 def get_orch_data(url):
@@ -58,7 +58,7 @@ def create_file():
     now = datetime.now()
 
     now_str = now.strftime("%Y.%m.%d.%H.%M.%S")
-    file_name = now_str + ".WellsFargo.Payments.csv"
+    file_name = now_str + ".Bank.Payments.csv"
 
     return open(file_name, "w+", encoding="UTF8", newline="")
 
@@ -66,7 +66,7 @@ def create_file():
 def add_data(transactions, file):
     """
     Creates file and add data from transactions to csv file in one batch
-    in Wells Fargo format.
+    in bank format.
 
     :param transactions: Input transactions being put into csv file.
     :param file: File descriptor for file that we are adding data to.
@@ -108,7 +108,7 @@ def add_data(transactions, file):
             pi["PayeeDetails"]["PayeeParty"]["Address"]["City"],  # PayeeCity
             pi["PayeeDetails"]["PayeeParty"]["Address"]["State"],  # PayeeState
             pi["PayeeDetails"]["PayeeParty"]["Address"]["Zip"],  # PayeeZipcode
-            lookup("VenerableCheckAccount", "WellsFargoAccounts", "Account.json"),  # Account
+            lookup("CompanyCheckAccount", "BigBankAccounts", "Account.json"),  # Account
             pi["PayeeDetails"]["PaymentAnnotation"],  # Comments
             pi["PaymentInfo"]["Payment"]["CurrencyAmount"],  # Amount
             pi["PaymentInfo"]["Payment"]["CurrencyInstrument"]["Symbol"],  # Currency
@@ -166,7 +166,7 @@ def main():
         file_name = file.name
 
     # creates new dir and moves file into it
-    new_dir = r"wf_files"
+    new_dir = r"sheets"
     current_directory = os.getcwd()
     final_directory = os.path.join(current_directory, new_dir)
     if not os.path.exists(final_directory):
@@ -177,7 +177,7 @@ def main():
     logger.info("Creating s3 bucket...")
     # creates s3 bucket
     s3 = boto3.resource("s3")
-    bucket_name = "wf-consumer-bucket"
+    bucket_name = "bigbank-consumer-bucket"
     bucket = create_bucket(s3, bucket_name)
     bucket.upload_file(f"{new_dir}/{file_name}", f"{file_name}")
     logger.info("File with obj-key '%s' upload to s3 bucket '%s'. ", file_name, bucket_name)

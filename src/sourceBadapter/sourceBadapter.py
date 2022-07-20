@@ -96,7 +96,7 @@ def build_PaymentInfo(transaction):
 
 def build_VLP(transaction):
     """
-    Builds the VenerableLedgerProcessing section of a PaymentInstruction.
+    Builds the CompanyLedgerProcessing section of a PaymentInstruction.
 
     :param transaction: Transaction data being used to build section.
     :return: VLP section.
@@ -106,11 +106,11 @@ def build_VLP(transaction):
     vlp["IntendedGeneralLedgerPostingDate"] = transaction["CycleDate"]
     vlp["PaymentCompanyParty"] = lookup(
         alias=transaction["LegalEntity"],
-        alias_set="VenerableCompanies",
+        alias_set="CompanyCompanies",
         lookup_file="OrganizationParty.json",
     )
     vlp["PaymentCompanyGeneralLedgerAccount"] = lookup(
-        alias="VIAC", alias_set="VenerableAccounts", lookup_file="Account.json"
+        alias="COMP", alias_set="CompanyAccounts", lookup_file="Account.json"
     )
 
     return vlp
@@ -172,7 +172,7 @@ def build_PaymentInstruction(transaction):
     pi = {"PaymentInstruction": {}}
     PaymentInstruction = pi["PaymentInstruction"]
     PaymentInstruction["ContextSource"] = build_ContextSource(transaction)
-    PaymentInstruction["VenerableLedgerProcessing"] = build_VLP(transaction)
+    PaymentInstruction["CompanyLedgerProcessing"] = build_VLP(transaction)
     PaymentInstruction["PaymentInfo"] = build_PaymentInfo(transaction)
     PaymentInstruction["PayeeDetails"] = build_PayeeDetails(transaction)
 

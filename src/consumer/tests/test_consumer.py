@@ -3,7 +3,7 @@ import json
 import os
 
 import pytest
-from wf_consumer import add_data, create_file
+from consumer import add_data, create_file
 
 
 def test_headers():

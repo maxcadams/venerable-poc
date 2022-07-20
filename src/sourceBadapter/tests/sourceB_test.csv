@@ -1,2 +1,2 @@
 SystemId,CycleDate,SystemProcessDate,BatchNum,TransactionId,TransactionCd,SiteId,TransType,PolicyNum,Amount,Claim,LegalEntity,CostCenter,PayeeType,PayeeFName,PayeeMinit,PayeeLName,PayeeStreet,PayeeCity,PayeeState,PayeeZipcode,AccountingFlow,Message,BankName,BankRoutingNumber,CompanyBankAccount
-LIFECAD,20220315,20220315,6519,101,DEATH,WC,CHK,165-95199," $22,164.00 ",1549,VIAC,10064,BEN,Peter,F,Samesung,432 Main street,St Paul,MN,55102,14,Call 1800.230.3011 with any questions,WellsFargo Bank,21200025,WFDIST
+LIFECAD,20220315,20220315,6519,101,DEATH,WC,CHK,165-95199," $22,164.00 ",1549,COMP,10064,BEN,Peter,F,Samesung,432 Main street,St Paul,MN,55102,14,Call 1800.230.3011 with any questions,BigBank Bank,21200025,BBDIST

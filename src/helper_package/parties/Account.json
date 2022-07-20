@@ -1,42 +1,42 @@
 {
     "BankAccounts": {
-        "VIACPMT": {
+        "COMPPMT": {
             "AccountId": "2726219",
             "AccountAliasSet": "BankAccounts",
-            "AccountAlias": "VIACPMT",
-            "AccountName": "VIAC Payments"
+            "AccountAlias": "COMPPMT",
+            "AccountName": "COMP Payments"
         },
-        "WFPMTS": {
+        "BBPMTS": {
             "AccountId": "1651619",
             "AccountAliasSet": "BankAccounts",
-            "AccountAlias": "WFPMTS",
-            "AccountName": "WellsFargo VIAC Payments"
+            "AccountAlias": "BBPMTS",
+            "AccountName": "BigBank COMP Payments"
         },
-        "WFDIST": {
+        "BBDIST": {
             "AccountId": "1651619",
             "AccountAliasSet": "BankAccounts",
-            "AccountAlias": "WFDIST",
-            "AccountName": "WellsFargo VIAC Payments"
+            "AccountAlias": "BBDIST",
+            "AccountName": "BigBank COMP Payments"
         }
     },
-    "WellsFargoAccounts": {
-        "VenerableCheckAccount": {
+    "BigBankAccounts": {
+        "CompanyCheckAccount": {
             "AccountId": "1651619",
-            "AccountAliasSet": "WellsFargoAccounts",
-            "AccountAlias": "VenerableCheckAccount",
-            "AccountName": "WellsFargo VIAC Payments"
+            "AccountAliasSet": "BigBankAccounts",
+            "AccountAlias": "CompanyCheckAccount",
+            "AccountName": "BigBank COMP Payments"
         }
     },
-    "VenerableAccounts": {
-        "VIAC": {
+    "CompanyAccounts": {
+        "COMP": {
             "AccountId": "85190315-5816-7V45-9140-F626AI8S2N0L",
-            "AccountAliasSet": "VenerableAccounts",
-            "AccountAlias": "VIAC",
+            "AccountAliasSet": "CompanyAccounts",
+            "AccountAlias": "COMP",
             "AccountName": "Primary Disbursements"
         },
         "DISB": {
             "AccountId": "72844901-4351-4A55-8846-B326AE3D2E0F",
-            "AccountAliasSet": "VenerableAccounts",
+            "AccountAliasSet": "CompanyAccounts",
             "AccountAlias": "DISB",
             "AccountName": "Primary Disbursements"
         }

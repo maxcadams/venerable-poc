@@ -1,13 +1,13 @@
 {
     "BankingInstitutions": {
-        "Wells Fargo": {
+        "BigBank": {
             "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
-            "FullName": "WellsFargo Bank, Inc",
+            "FullName": "BigBank Bank, Inc",
             "ABARoutingNumber": "21200025"
         },
-        "WellsFargo Bank": {
+        "BigBank Bank": {
             "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
-            "FullName": "WellsFargo Bank, Inc",
+            "FullName": "BigBank Bank, Inc",
             "ABARoutingNumber": "21200025"
         }
     }

@@ -17,7 +17,7 @@ from helper_package import decimalencoder
 
 # pulls endpoints from adapter_urls.txt, a file that contains adapter endpoints
 with open("adapter_urls.txt") as file:
-    urls = [line[line.index("h") :].rstrip("\n") for line in file]
+    urls = [line[line.index("h"):].rstrip("\n") for line in file]
 
 
 def build_domain(pi_list):

@@ -3,8 +3,6 @@ Test sourceB adapter logic.
 To test, we only check the keys, not the data.
 
 Author: Max Adams
-
-Note: In test functions, _wf suffix signifies Wells Fargo specific tests.
 """
 
 import pytest
@@ -27,10 +25,10 @@ def test_outer_node():
     assert "PaymentInstructions" in domain["Transactions"]
 
 
-def test_payment_instruction_nodes_wf():
+def test_payment_instruction_nodes():
     """
     This tests the PaymentInstruction build for a single entry.
-    Checks if fields needed for Wells Fargo file are created.
+    Checks if fields needed for file are created.
     """
 
     # checks if outer keys are there
@@ -40,7 +38,7 @@ def test_payment_instruction_nodes_wf():
     assert "ContextSource" in pi_keys
 
 
-def test_PayeeDetails_wf():
+def test_PayeeDetails():
     """
     Checks for valid PayeeDetail nodes and for
     nodes within PayeeDetails
@@ -64,7 +62,7 @@ def test_PayeeDetails_wf():
     assert "Zip" in AddressKeys
 
 
-def test_PaymentInfo_wf():
+def test_PaymentInfo():
     """
     Checks for valid PaymentInfo nodes and for
     nodes within PaymentInfo nodes.
@@ -83,7 +81,7 @@ def test_PaymentInfo_wf():
     assert "Symbol" in CIKeys
 
 
-def test_ContextSource_wf():
+def test_ContextSource():
     """
     Checks for valid ContextSources nodes.
     """

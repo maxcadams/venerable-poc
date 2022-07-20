@@ -3,8 +3,6 @@ Test sourceA adapter logic.
 To test, we only check the keys, not the data.
 
 Author: Max Adams
-
-Note: In test functions, _wf suffix signifies Wells Fargo specific tests.
 """
 
 
@@ -13,7 +11,7 @@ from sourceAadapter import build_PaymentInstruction
 
 example_data = {
     "id": "5b288c57-bb42-4e38-b42c-afbe13816dab",
-    "SourceId": "GARWIN",
+    "SourceId": "SOURCEA",
     "CycleDate": "20220315",
     "BatchDate": "20220314",
     "BatchId": 123591,
@@ -24,7 +22,7 @@ example_data = {
     "ContractNum": "15681-61-2062",
     "Amount": "$15,231.36",
     "ClaimNum": 320695,
-    "CompanyId": "VIAC",
+    "CompanyId": "COMP",
     "CostCenter": 10062,
     "AnnuitantName": "",
     "AnnuitantStreet": "",
@@ -43,9 +41,9 @@ example_data = {
     "OtherPayeeZipcode": None,
     "SpeedChart": 22,
     "Message": "Death Interest details for this disbursement are shown below",
-    "IssuerBankName": "Wells Fargo",
+    "IssuerBankName": "BigBank",
     "IssuerBankABA": 21200025,
-    "IssuerBankAccount": "WFPMTS",
+    "IssuerBankAccount": "BBPMTS",
 }
 
 pi_outter = build_PaymentInstruction(example_data)
@@ -61,10 +59,10 @@ def test_outer_node():
 pi = pi_outter["PaymentInstruction"]
 
 
-def test_payment_instruction_nodes_wf():
+def test_payment_instruction_nodes():
     """
     This tests the PaymentInstruction build for a single entry.
-    Checks if fields needed for Wells Fargo file are created.
+    Checks if fields needed for Fargo file are created.
     """
 
     # checks if outer keys are there
@@ -73,7 +71,7 @@ def test_payment_instruction_nodes_wf():
     assert "ContextSource" in pi
 
 
-def test_PayeeDetails_wf():
+def test_PayeeDetails():
     """
     Checks for valid PayeeDetail nodes and for
     nodes within PayeeDetails
@@ -97,7 +95,7 @@ def test_PayeeDetails_wf():
     assert "Zip" in AddressKeys
 
 
-def test_PaymentInfo_wf():
+def test_PaymentInfo():
     """
     Checks for valid PaymentInfo nodes and for
     nodes within PaymentInfo nodes.
@@ -116,7 +114,7 @@ def test_PaymentInfo_wf():
     assert "Symbol" in CIKeys
 
 
-def test_ContextSource_wf():
+def test_ContextSource():
     """
     Checks for valid ContextSources nodes.
     """

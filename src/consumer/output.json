@@ -5,7 +5,7 @@
             {
                 "PaymentInstruction": {
                     "ContextSource": {
-                        "Source": "GARWIN",
+                        "Source": "SOURCEA",
                         "TriggeringPaymentEventLocation": "OFFICE",
                         "TriggeringPaymentEventID": 320695,
                         "TriggeringPaymentDatetime": null,
@@ -13,31 +13,31 @@
                         "TriggeringPaymentEventBatchCycleDatetime": "20220314",
                         "TriggeringPaymentEvent": "DEATH_BENEFIT"
                     },
-                    "VenerableLedgerProcessing": {
+                    "CompanyLedgerProcessing": {
                         "PaymentCompanyCostCenter": 10062,
                         "IntendedGeneralLedgerPostingDate": "20220314",
                         "PaymentCompanyParty": {
                             "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
-                            "PartyName": "Venerable Holdings Inc"
+                            "PartyName": "Company Holdings Inc"
                         },
                         "PaymentCompanyGeneralLedgerAccount": {
                             "AccountId": "2726219",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "VIACPMT",
-                            "AccountName": "VIAC Payments"
+                            "AccountAlias": "COMPPMT",
+                            "AccountName": "COMPPayments"
                         }
                     },
                     "PaymentInfo": {
                         "PaymentIssuerBankParty": {
                             "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
-                            "FullName": "WellsFargo Bank, Inc",
+                            "FullName": "BigBank Bank, Inc",
                             "ABARoutingNumber": "21200025"
                         },
                         "PaymentIssuerBankAccount": {
                             "AccountId": "1651619",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "WFPMTS",
-                            "AccountName": "WellsFargo VIAC Payments"
+                            "AccountAlias": "BBPMTS",
+                            "AccountName": "BigBank C Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220314",
                         "PaymentTransactionId": "5b288c57-bb42-4e38-b42c-afbe13816dab",
@@ -71,7 +71,7 @@
             {
                 "PaymentInstruction": {
                     "ContextSource": {
-                        "Source": "GARWIN",
+                        "Source": "SOURCEA",
                         "TriggeringPaymentEventLocation": "SITE",
                         "TriggeringPaymentEventID": 320702,
                         "TriggeringPaymentDatetime": null,
@@ -79,31 +79,31 @@
                         "TriggeringPaymentEventBatchCycleDatetime": "20220314",
                         "TriggeringPaymentEvent": "WITHDRAWAL"
                     },
-                    "VenerableLedgerProcessing": {
+                    "CompanyLedgerProcessing": {
                         "PaymentCompanyCostCenter": 10062,
                         "IntendedGeneralLedgerPostingDate": "20220314",
                         "PaymentCompanyParty": {
                             "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
-                            "PartyName": "Venerable Holdings Inc"
+                            "PartyName": "Company Holdings Inc"
                         },
                         "PaymentCompanyGeneralLedgerAccount": {
                             "AccountId": "2726219",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "VIACPMT",
-                            "AccountName": "VIAC Payments"
+                            "AccountAlias": "COMPPMT",
+                            "AccountName": "COMPPayments"
                         }
                     },
                     "PaymentInfo": {
                         "PaymentIssuerBankParty": {
                             "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
-                            "FullName": "WellsFargo Bank, Inc",
+                            "FullName": "BigBank Bank, Inc",
                             "ABARoutingNumber": "21200025"
                         },
                         "PaymentIssuerBankAccount": {
                             "AccountId": "1651619",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "WFPMTS",
-                            "AccountName": "WellsFargo VIAC Payments"
+                            "AccountAlias": "BBPMTS",
+                            "AccountName": "BigBank C Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220314",
                         "PaymentTransactionId": "013aa351-af32-4845-ab84-c13f626e4379",
@@ -137,7 +137,7 @@
             {
                 "PaymentInstruction": {
                     "ContextSource": {
-                        "Source": "GARWIN",
+                        "Source": "SOURCEA",
                         "TriggeringPaymentEventLocation": "OFFICE",
                         "TriggeringPaymentEventID": 320695,
                         "TriggeringPaymentDatetime": null,
@@ -145,31 +145,31 @@
                         "TriggeringPaymentEventBatchCycleDatetime": "20220314",
                         "TriggeringPaymentEvent": "DEATH_BENEFIT"
                     },
-                    "VenerableLedgerProcessing": {
+                    "CompanyLedgerProcessing": {
                         "PaymentCompanyCostCenter": 10062,
                         "IntendedGeneralLedgerPostingDate": "20220314",
                         "PaymentCompanyParty": {
                             "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
-                            "PartyName": "Venerable Holdings Inc"
+                            "PartyName": "Company Holdings Inc"
                         },
                         "PaymentCompanyGeneralLedgerAccount": {
                             "AccountId": "2726219",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "VIACPMT",
-                            "AccountName": "VIAC Payments"
+                            "AccountAlias": "COMPPMT",
+                            "AccountName": "COMPPayments"
                         }
                     },
                     "PaymentInfo": {
                         "PaymentIssuerBankParty": {
                             "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
-                            "FullName": "WellsFargo Bank, Inc",
+                            "FullName": "BigBank Bank, Inc",
                             "ABARoutingNumber": "21200025"
                         },
                         "PaymentIssuerBankAccount": {
                             "AccountId": "1651619",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "WFPMTS",
-                            "AccountName": "WellsFargo VIAC Payments"
+                            "AccountAlias": "BBPMTS",
+                            "AccountName": "BigBank C Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220314",
                         "PaymentTransactionId": "d795c411-ddbb-4df0-81eb-027f5fb5c924",
@@ -203,7 +203,7 @@
             {
                 "PaymentInstruction": {
                     "ContextSource": {
-                        "Source": "GARWIN",
+                        "Source": "SOURCEA",
                         "TriggeringPaymentEventLocation": "OFFICE",
                         "TriggeringPaymentEventID": 320695,
                         "TriggeringPaymentDatetime": null,
@@ -211,31 +211,31 @@
                         "TriggeringPaymentEventBatchCycleDatetime": "20220314",
                         "TriggeringPaymentEvent": "SURRENDER_CHARGE"
                     },
-                    "VenerableLedgerProcessing": {
+                    "CompanyLedgerProcessing": {
                         "PaymentCompanyCostCenter": 10062,
                         "IntendedGeneralLedgerPostingDate": "20220314",
                         "PaymentCompanyParty": {
                             "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
-                            "PartyName": "Venerable Holdings Inc"
+                            "PartyName": "Company Holdings Inc"
                         },
                         "PaymentCompanyGeneralLedgerAccount": {
                             "AccountId": "2726219",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "VIACPMT",
-                            "AccountName": "VIAC Payments"
+                            "AccountAlias": "COMPPMT",
+                            "AccountName": "COMPPayments"
                         }
                     },
                     "PaymentInfo": {
                         "PaymentIssuerBankParty": {
                             "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
-                            "FullName": "WellsFargo Bank, Inc",
+                            "FullName": "BigBank Bank, Inc",
                             "ABARoutingNumber": "21200025"
                         },
                         "PaymentIssuerBankAccount": {
                             "AccountId": "1651619",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "WFPMTS",
-                            "AccountName": "WellsFargo VIAC Payments"
+                            "AccountAlias": "BBPMTS",
+                            "AccountName": "BigBank C Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220314",
                         "PaymentTransactionId": "8216be9e-7870-4ade-8aa1-9959e0fc9d26",
@@ -269,7 +269,7 @@
             {
                 "PaymentInstruction": {
                     "ContextSource": {
-                        "Source": "GARWIN",
+                        "Source": "SOURCEA",
                         "TriggeringPaymentEventLocation": "OFFICE",
                         "TriggeringPaymentEventID": 320695,
                         "TriggeringPaymentDatetime": null,
@@ -277,31 +277,31 @@
                         "TriggeringPaymentEventBatchCycleDatetime": "20220314",
                         "TriggeringPaymentEvent": "SURRENDER_CHARGE"
                     },
-                    "VenerableLedgerProcessing": {
+                    "CompanyLedgerProcessing": {
                         "PaymentCompanyCostCenter": 10062,
                         "IntendedGeneralLedgerPostingDate": "20220314",
                         "PaymentCompanyParty": {
                             "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
-                            "PartyName": "Venerable Holdings Inc"
+                            "PartyName": "Company Holdings Inc"
                         },
                         "PaymentCompanyGeneralLedgerAccount": {
                             "AccountId": "2726219",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "VIACPMT",
-                            "AccountName": "VIAC Payments"
+                            "AccountAlias": "COMPPMT",
+                            "AccountName": "COMPPayments"
                         }
                     },
                     "PaymentInfo": {
                         "PaymentIssuerBankParty": {
                             "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
-                            "FullName": "WellsFargo Bank, Inc",
+                            "FullName": "BigBank Bank, Inc",
                             "ABARoutingNumber": "21200025"
                         },
                         "PaymentIssuerBankAccount": {
                             "AccountId": "1651619",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "WFPMTS",
-                            "AccountName": "WellsFargo VIAC Payments"
+                            "AccountAlias": "BBPMTS",
+                            "AccountName": "BigBank C Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220314",
                         "PaymentTransactionId": "c11ff50f-d48b-4f64-9775-3254307b3f7f",
@@ -335,7 +335,7 @@
             {
                 "PaymentInstruction": {
                     "ContextSource": {
-                        "Source": "GARWIN",
+                        "Source": "SOURCEA",
                         "TriggeringPaymentEventLocation": "SITE",
                         "TriggeringPaymentEventID": 320695,
                         "TriggeringPaymentDatetime": null,
@@ -343,31 +343,31 @@
                         "TriggeringPaymentEventBatchCycleDatetime": "20220314",
                         "TriggeringPaymentEvent": "DEATH_BENEFIT"
                     },
-                    "VenerableLedgerProcessing": {
+                    "CompanyLedgerProcessing": {
                         "PaymentCompanyCostCenter": 10062,
                         "IntendedGeneralLedgerPostingDate": "20220314",
                         "PaymentCompanyParty": {
                             "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
-                            "PartyName": "Venerable Holdings Inc"
+                            "PartyName": "Company Holdings Inc"
                         },
                         "PaymentCompanyGeneralLedgerAccount": {
                             "AccountId": "2726219",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "VIACPMT",
-                            "AccountName": "VIAC Payments"
+                            "AccountAlias": "COMPPMT",
+                            "AccountName": "COMPPayments"
                         }
                     },
                     "PaymentInfo": {
                         "PaymentIssuerBankParty": {
                             "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
-                            "FullName": "WellsFargo Bank, Inc",
+                            "FullName": "BigBank Bank, Inc",
                             "ABARoutingNumber": "21200025"
                         },
                         "PaymentIssuerBankAccount": {
                             "AccountId": "1651619",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "WFPMTS",
-                            "AccountName": "WellsFargo VIAC Payments"
+                            "AccountAlias": "BBPMTS",
+                            "AccountName": "BigBank C Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220314",
                         "PaymentTransactionId": "ed27f97c-6dfd-4aca-998a-67da92e82ba0",
@@ -401,7 +401,7 @@
             {
                 "PaymentInstruction": {
                     "ContextSource": {
-                        "Source": "GARWIN",
+                        "Source": "SOURCEA",
                         "TriggeringPaymentEventLocation": "SITE",
                         "TriggeringPaymentEventID": 320695,
                         "TriggeringPaymentDatetime": null,
@@ -409,31 +409,31 @@
                         "TriggeringPaymentEventBatchCycleDatetime": "20220314",
                         "TriggeringPaymentEvent": "MARKET_VALUE_ADJ"
                     },
-                    "VenerableLedgerProcessing": {
+                    "CompanyLedgerProcessing": {
                         "PaymentCompanyCostCenter": 10062,
                         "IntendedGeneralLedgerPostingDate": "20220314",
                         "PaymentCompanyParty": {
                             "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
-                            "PartyName": "Venerable Holdings Inc"
+                            "PartyName": "Company Holdings Inc"
                         },
                         "PaymentCompanyGeneralLedgerAccount": {
                             "AccountId": "2726219",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "VIACPMT",
-                            "AccountName": "VIAC Payments"
+                            "AccountAlias": "COMPPMT",
+                            "AccountName": "COMPPayments"
                         }
                     },
                     "PaymentInfo": {
                         "PaymentIssuerBankParty": {
                             "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
-                            "FullName": "WellsFargo Bank, Inc",
+                            "FullName": "BigBank Bank, Inc",
                             "ABARoutingNumber": "21200025"
                         },
                         "PaymentIssuerBankAccount": {
                             "AccountId": "1651619",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "WFPMTS",
-                            "AccountName": "WellsFargo VIAC Payments"
+                            "AccountAlias": "BBPMTS",
+                            "AccountName": "BigBank C Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220314",
                         "PaymentTransactionId": "2ddbd161-382b-4d8a-9d2e-82cec713777d",
@@ -467,7 +467,7 @@
             {
                 "PaymentInstruction": {
                     "ContextSource": {
-                        "Source": "GARWIN",
+                        "Source": "SOURCEA",
                         "TriggeringPaymentEventLocation": "SITE",
                         "TriggeringPaymentEventID": 320695,
                         "TriggeringPaymentDatetime": null,
@@ -475,31 +475,31 @@
                         "TriggeringPaymentEventBatchCycleDatetime": "20220314",
                         "TriggeringPaymentEvent": "DEATH_BENEFIT"
                     },
-                    "VenerableLedgerProcessing": {
+                    "CompanyLedgerProcessing": {
                         "PaymentCompanyCostCenter": 10062,
                         "IntendedGeneralLedgerPostingDate": "20220314",
                         "PaymentCompanyParty": {
                             "PartyId": "9CCF30BF-60C6-47F6-823D-B531757E741A",
-                            "PartyName": "Venerable Holdings Inc"
+                            "PartyName": "Company Holdings Inc"
                         },
                         "PaymentCompanyGeneralLedgerAccount": {
                             "AccountId": "2726219",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "VIACPMT",
-                            "AccountName": "VIAC Payments"
+                            "AccountAlias": "COMPPMT",
+                            "AccountName": "COMPPayments"
                         }
                     },
                     "PaymentInfo": {
                         "PaymentIssuerBankParty": {
                             "PartyId": "96E894FA-3192-4D1A-AB92-73981AAA099F",
-                            "FullName": "WellsFargo Bank, Inc",
+                            "FullName": "BigBank Bank, Inc",
                             "ABARoutingNumber": "21200025"
                         },
                         "PaymentIssuerBankAccount": {
                             "AccountId": "1651619",
                             "AccountAliasSet": "BankAccounts",
-                            "AccountAlias": "WFPMTS",
-                            "AccountName": "WellsFargo VIAC Payments"
+                            "AccountAlias": "BBPMTS",
+                            "AccountName": "BigBank C Payments"
                         },
                         "IntendedPaymentIssuerBankPostingDate": "20220314",
                         "PaymentTransactionId": "ab857703-9fe3-4014-8c76-891395c43b8a",

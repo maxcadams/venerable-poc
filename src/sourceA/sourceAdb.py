@@ -6,7 +6,6 @@ sourceA data.
 
 Author: Max Adams
 """
-
 import json
 import logging
 import pprint
@@ -157,8 +156,8 @@ def main():
 
     while True:
         msg = input(
-            "Say 'finish' to stop and delete tables, 'scan' to scan both tables, 'exit' to stop without deleting tables: "
-        )
+            "Say 'finish' to stop and delete tables, 'scan' to scan both tables,\
+'exit' to stop without deleting tables: ")
         if msg == "finish":
             logger.info("Deleting table '%s' ...", table_name)
             sourceA.delete_table()

@@ -12,7 +12,7 @@
    "ContractNum": "15681-61-2062",
    "Amount": "$15,231.36",
    "ClaimNum": 320695,
-   "CompanyId": "VIAC",
+   "CompanyId": "COMP",
    "CostCenter": 10062,
    "AnnuitantName": "",
    "AnnuitantStreet": "",
@@ -31,9 +31,9 @@
    "OtherPayeeZipcode": null,
    "SpeedChart": 22,
    "Message": "Death Interest details for this disbursement are shown below",
-   "IssuerBankName": "Wells Fargo",
+   "IssuerBankName": "BigBank",
    "IssuerBankABA": 21200025,
-   "IssuerBankAccount": "WFPMTS"
+   "IssuerBankAccount": "BBPMTS"
   },
  {
    "id": "013aa351-af32-4845-ab84-c13f626e4379",
@@ -48,7 +48,7 @@
    "ContractNum": "6169-69-6522",
    "Amount": "$35,169.00",
    "ClaimNum": 320702,
-   "CompanyId": "VIAC",
+   "CompanyId": "COMP",
    "CostCenter": 10062,
    "AnnuitantName": "Joe Schmo",
    "AnnuitantStreet": "100 River Dr",
@@ -67,9 +67,9 @@
    "OtherPayeeZipcode": null,
    "SpeedChart": 91,
    "Message": "For any questions, please call 1-800-369-5303.",
-   "IssuerBankName": "Wells Fargo",
+   "IssuerBankName": "BigBank",
    "IssuerBankABA": 21200025,
-   "IssuerBankAccount": "WFPMTS"
+   "IssuerBankAccount": "BBPMTS"
  },
  {
    "id": "d795c411-ddbb-4df0-81eb-027f5fb5c924",
@@ -84,7 +84,7 @@
    "ContractNum": "15691-61-2323",
    "Amount": "$9,198.35",
    "ClaimNum": 320695,
-   "CompanyId": "VIAC",
+   "CompanyId": "COMP",
    "CostCenter": 10062,
    "AnnuitantName": "",
    "AnnuitantStreet": "",
@@ -103,9 +103,9 @@
    "OtherPayeeZipcode": null,
    "SpeedChart": 22,
    "Message": "Death Interest details for this disbursement are shown below",
-   "IssuerBankName": "Wells Fargo",
+   "IssuerBankName": "BigBank",
    "IssuerBankABA": 21200025,
-   "IssuerBankAccount": "WFPMTS"
+   "IssuerBankAccount": "BBPMTS"
  },
  {
    "id": "8216be9e-7870-4ade-8aa1-9959e0fc9d26",
@@ -120,7 +120,7 @@
    "ContractNum": "26621-98-6212",
    "Amount": "$152.90",
    "ClaimNum": 320695,
-   "CompanyId": "VIAC",
+   "CompanyId": "COMP",
    "CostCenter": 10062,
    "AnnuitantName": "Mike Lebowski",
    "AnnuitantStreet": "19 Dudirito Rd",
@@ -139,9 +139,9 @@
    "OtherPayeeZipcode": null,
    "SpeedChart": 22,
    "Message": "For any questions, please call 1-800-369-5303. ",
-   "IssuerBankName": "Wells Fargo",
+   "IssuerBankName": "BigBank",
    "IssuerBankABA": 21200025,
-   "IssuerBankAccount": "WFPMTS"
+   "IssuerBankAccount": "BBPMTS"
  },
  {
    "id": "c11ff50f-d48b-4f64-9775-3254307b3f7f",
@@ -156,7 +156,7 @@
    "ContractNum": "36123-98-6233",
    "Amount": "$651.69",
    "ClaimNum": 320695,
-   "CompanyId": "VIAC",
+   "CompanyId": "COMP",
    "CostCenter": 10062,
    "AnnuitantName": "Sam Rose",
    "AnnuitantStreet": "165 Main St",
@@ -175,9 +175,9 @@
    "OtherPayeeZipcode": null,
    "SpeedChart": 15,
    "Message": "For any questions, please call 1-800-369-5303. ",
-   "IssuerBankName": "Wells Fargo",
+   "IssuerBankName": "BigBank",
    "IssuerBankABA": 21200025,
-   "IssuerBankAccount": "WFPMTS"
+   "IssuerBankAccount": "BBPMTS"
  },
  {
    "id": "ed27f97c-6dfd-4aca-998a-67da92e82ba0",
@@ -192,7 +192,7 @@
    "ContractNum": "91091-00-6512",
    "Amount": "$6,819.36",
    "ClaimNum": 320695,
-   "CompanyId": "VIAC",
+   "CompanyId": "COMP",
    "CostCenter": 10062,
    "AnnuitantName": "",
    "AnnuitantStreet": "",
@@ -211,9 +211,9 @@
    "OtherPayeeZipcode": null,
    "SpeedChart": 22,
    "Message": "Death Interest details for this disbursement are shown below",
-   "IssuerBankName": "Wells Fargo",
+   "IssuerBankName": "BigBank",
    "IssuerBankABA": 21200025,
-   "IssuerBankAccount": "WFPMTS"
+   "IssuerBankAccount": "BBPMTS"
  },
  {
    "id": "2ddbd161-382b-4d8a-9d2e-82cec713777d",
@@ -228,7 +228,7 @@
    "ContractNum": "91001-32-6191",
    "Amount": "$9,919.00",
    "ClaimNum": 320695,
-   "CompanyId": "VIAC",
+   "CompanyId": "COMP",
    "CostCenter": 10062,
    "AnnuitantName": "",
    "AnnuitantStreet": "",
@@ -247,9 +247,9 @@
    "OtherPayeeZipcode": 55102,
    "SpeedChart": 23,
    "Message": "For any questions, please call 1-800-369-5303. ",
-   "IssuerBankName": "Wells Fargo",
+   "IssuerBankName": "BigBank",
    "IssuerBankABA": 21200025,
-   "IssuerBankAccount": "WFPMTS"
+   "IssuerBankAccount": "BBPMTS"
  },
  {
    "id": "ab857703-9fe3-4014-8c76-891395c43b8a",
@@ -264,7 +264,7 @@
    "ContractNum": "60266-35-6981",
    "Amount": "$19,918.00",
    "ClaimNum": 320695,
-   "CompanyId": "VIAC",
+   "CompanyId": "COMP",
    "CostCenter": 10062,
    "AnnuitantName": "",
    "AnnuitantStreet": "",
@@ -283,8 +283,8 @@
    "OtherPayeeZipcode": null,
    "SpeedChart": 22,
    "Message": "Death Interest details for this disbursement are shown below",
-   "IssuerBankName": "Wells Fargo",
+   "IssuerBankName": "BigBank",
    "IssuerBankABA": 21200025,
-   "IssuerBankAccount": "WFPMTS"
+   "IssuerBankAccount": "BBPMTS"
  }
 ]
