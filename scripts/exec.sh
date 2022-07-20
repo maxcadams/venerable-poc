@@ -5,7 +5,7 @@ execute () {
     #cat deploy_logs.txt | grep "endpoint:"  #| xargs >> ../api_endpoint.txt;
 }
 
-cd ../src;
+cd src;
 # go to sourceAadapter and deploy
 if [ ! -s orch/adapter_urls.txt ]
 then

@@ -1,4 +1,4 @@
 
-endpoint: GET - https://u560w9j23d.execute-api.us-east-1.amazonaws.com/dev/sourceB
+endpoint: GET - https://jstsuh2nlj.execute-api.us-east-1.amazonaws.com/dev/sourceB
 functions:
-  adapt: sourceBadapter-dev-adapt (14 kB)
+  adapt: sourceBadapter-dev-adapt (19 kB)
