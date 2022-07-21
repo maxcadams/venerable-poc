@@ -1,5 +1,11 @@
 
 dashboard: https://app.serverless.com/madams/apps/orch/orch/dev/us-east-1
-endpoint: GET - https://9se5djs3k5.execute-api.us-east-1.amazonaws.com/dev/orch
+endpoint: GET - https://h5b5kr7sig.execute-api.us-east-1.amazonaws.com/dev/orch
 functions:
   orch: orch-dev-orch (91 kB)
+
+Stack Outputs:
+  OrchLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:706797746903:function:orch-dev-orch:67
+  EnterpriseLogAccessIamRole: arn:aws:iam::706797746903:role/orch-dev-EnterpriseLogAccessIamRole-89RYKV8Z3X0
+  ServiceEndpoint: https://h5b5kr7sig.execute-api.us-east-1.amazonaws.com/dev
+  ServerlessDeploymentBucketName: orch-dev-serverlessdeploymentbucket-xbudkxk9i63f

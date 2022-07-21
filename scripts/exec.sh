@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 execute () {
-    sls deploy | tee deploy_logs.txt;
+    sls deploy --verbose| tee deploy_logs.txt;
     #cat deploy_logs.txt | grep "endpoint:"  #| xargs >> ../api_endpoint.txt;
 }
 
