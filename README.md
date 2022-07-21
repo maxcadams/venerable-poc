@@ -5,7 +5,7 @@ Adapter Integration POC demonstrating the simplicity and benefits of a Hub-and-S
 
 ## Setup
 Make sure you have Serverless Framework setup with AWS.
-This [link](https://www.serverless.com/framework/docs/getting-started) contians instructions of setting up
+This [link](https://www.serverless.com/framework/docs/getting-started) contains instructions of setting up
 Serverless with your AWS account.
 
 ## Running POC
