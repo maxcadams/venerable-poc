@@ -2,24 +2,24 @@
 
 execute () {
     sls deploy --verbose| tee deploy_logs.txt;
-    #cat deploy_logs.txt | grep "endpoint:"  #| xargs >> ../api_endpoint.txt;
 }
 
-cd src;
-# go to sourceAadapter and deploy
-if [ ! -s orch/adapter_urls.txt ]
+cd src/adapters;
+
+if [ ! -s ../orch/adapter_urls.txt ]
 then
-  # echo 'in here'
+  # if adapter_urls.txt empty, deploy sourceAadapter
   cd sourceAadapter;
   execute
-  cat deploy_logs.txt | grep "endpoint:" | xargs > ../orch/adapter_urls.txt;
+  cat deploy_logs.txt | grep "endpoint:" | xargs > ../../orch/adapter_urls.txt;
 else
+  # else (meaning sourceA already standing and url already in file) 
+  # deploy sourceBadapter and add endpoint url to file
   cd sourceBadapter;
   execute
-  cat deploy_logs.txt | grep "endpoint:" | xargs >> ../orch/adapter_urls.txt
+  cat deploy_logs.txt | grep "endpoint:" | xargs >> ../../orch/adapter_urls.txt
 fi
-cd ../orch;
-#cat ../api_endpoint.txt > adapter_urls.txt
+cd ../../orch;
+# deploy orch
 execute
 cat deploy_logs.txt | grep "endpoint:" | xargs > ../consumer/orch_url.txt;
-cd ..

@@ -1,4 +1,4 @@
 #!/bin/zsh
 ./scripts/exec.sh;
-cd src/sourceB;
+cd src/producers/sourceB;
 python3 sourceBdb.py

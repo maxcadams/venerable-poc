@@ -1,12 +1,9 @@
 #!/bin/zsh
 
-cd src
-: > api_endpoint.txt
-# go to sourceAadapter and deploy
-cd sourceAadapter;
+cd src/adapters/sourceAadapter;
 sls remove;
 cd ../sourceBadapter;
 sls remove;
-cd ../orch;
+cd ../../orch;
 sls remove;
 : > adapter_urls.txt
