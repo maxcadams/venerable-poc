@@ -9,8 +9,8 @@ This [link](https://www.serverless.com/framework/docs/getting-started) contians 
 Serverless with your AWS account.
 
 ## Running POC
-** Make sure you run the POC in the order stated, or else it will not work. If anything disrupts
-   the deployment of any of the pieces, run the remove script and start over. **
+**Make sure you run the POC in the order stated, or else it will not work. If anything disrupts
+   the deployment of any of the pieces, run the remove script and start over.**
 
 1. Standup sourceA and sourceAadapter. 
 ```
@@ -18,7 +18,7 @@ Serverless with your AWS account.
 ```
 After this, you can go to step 3 run the consumer script with just sourceA data.
 
-2. Standup sourceB and sourceBadapter. ** Run this only after srcA has been ran. **
+2. Standup sourceB and sourceBadapter. * Run this only after srcA has been ran.**
 ```
 ./scripts/srcB.sh
 ```
