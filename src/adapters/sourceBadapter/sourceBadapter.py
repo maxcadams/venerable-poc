@@ -18,7 +18,7 @@ import uuid
 
 import boto3
 
-sys.path.append("..")
+sys.path.append("../..")
 from helper_package import decimalencoder
 from helper_package.lookup import lookup
 
