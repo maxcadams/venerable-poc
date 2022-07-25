@@ -41,7 +41,7 @@ provider:
  
 package:
   patterns:
-    - '../helper_package/**'
+    - '../../helper_package/**'
     - '!output.json'
 # you can overwrite defaults here
 #  stage: dev

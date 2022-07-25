@@ -1,0 +1,2 @@
+endpoint: GET - https://oy6kzscj4c.execute-api.us-east-1.amazonaws.com/dev/sourceA
+endpoint: GET - https://a9m3dnuzi7.execute-api.us-east-1.amazonaws.com/dev/sourceB

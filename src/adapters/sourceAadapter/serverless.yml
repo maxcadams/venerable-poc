@@ -14,7 +14,7 @@
 service: sourceAadapter
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
-org: madams
+#org: madams
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -43,7 +43,7 @@ provider:
 
 package:
   patterns:
-    - '../helper_package/**'
+    - '../../helper_package/**'
 
 functions:
   adapt:

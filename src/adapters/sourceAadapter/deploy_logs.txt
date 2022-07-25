@@ -1,0 +1,9 @@
+
+endpoint: GET - https://oy6kzscj4c.execute-api.us-east-1.amazonaws.com/dev/sourceA
+functions:
+  adapt: sourceAadapter-dev-adapt (16 kB)
+
+Stack Outputs:
+  AdaptLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:706797746903:function:sourceAadapter-dev-adapt:51
+  ServiceEndpoint: https://oy6kzscj4c.execute-api.us-east-1.amazonaws.com/dev
+  ServerlessDeploymentBucketName: sourceaadapter-dev-serverlessdeploymentbucket-15zd4klithm5y
