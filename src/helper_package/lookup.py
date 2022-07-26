@@ -3,21 +3,16 @@ import sys
 from decimal import Decimal
 
 
-def lookup(alias, alias_set, lookup_file):
+def lookup_helper(alias, alias_set, lookup_file, dir_path):
     """
-    Performs a party look up by alias in alias_set.
+    Helper, where actual look up occurs.
 
     :param alias: Alias of party we are looking up.
     :param alias_set: Alias set in which party resides.
-    :param lookup_file: File name of json (look up db)
+    :param lookup_file: File name of json (look up db).
+    :param dir_path: Path to party file.
     :return: Party information
     """
-    if sys.executable == "/var/lang/bin/python3.8":  # if we are in aws
-        dir_path = f"helper_package/parties/{lookup_file}"
-    else:
-        dir_path = f"../helper_package/parties/{lookup_file}"
-
-        # ../ if locally ran .. se how we can change this
     with open(dir_path) as file:
         file_content = json.load(file, parse_float=Decimal)
 
@@ -33,3 +28,29 @@ def lookup(alias, alias_set, lookup_file):
 
         # here, we are either in Account, BankParty, or OrganizationParty lookup
         return file_content[alias_set][alias]
+
+def lookup(alias, alias_set, lookup_file):
+    """
+    Performs a party look up by alias in alias_set.
+
+    :param alias: Alias of party we are looking up.
+    :param alias_set: Alias set in which party resides.
+    :param lookup_file: File name of json (look up db)
+    :return: Party information
+    """
+    if sys.executable == "/var/lang/bin/python3.8":  # if we are in aws
+        dir_path = f"helper_package/parties/{lookup_file}"
+    else:
+        dir_path = f"../helper_package/parties/{lookup_file}"
+    
+    # handle if we are testing consumer or source adapters
+    try:
+        return lookup_helper(alias=alias, alias_set=alias_set, 
+                               lookup_file=lookup_file, dir_path=dir_path)
+    except FileNotFoundError:
+        dir_path = f"../../helper_package/parties/{lookup_file}"
+        return lookup_helper(alias=alias, alias_set=alias_set, 
+                               lookup_file=lookup_file, dir_path=dir_path)
+
+        # ../ if locally ran .. se how we can change this
+    

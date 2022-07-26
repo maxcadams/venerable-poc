@@ -13,8 +13,8 @@
 
 service: orch
 # app and org for use with dashboard.serverless.com
-app: orch
-org: madams
+# app: orch
+# org: madams
 
 
 # You can pin your service to only deploy with a specific Serverless version
