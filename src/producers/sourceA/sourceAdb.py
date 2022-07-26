@@ -10,6 +10,7 @@ import json
 import logging
 import pprint
 from decimal import Decimal
+from tokenize import String
 
 import boto3
 from botocore.exceptions import ClientError
@@ -58,7 +59,6 @@ class SourceA:
                     err.response["Error"]["Message"],
                 )
                 raise
-
         return self.table
 
     def add_transaction(self, transaction):
@@ -132,6 +132,16 @@ class SourceA:
             )
             raise
 
+def create_file(arn : str):
+    """
+    Creates table_arn.txt in sourceAadapter directory with table ARN.
+
+    :param arn: ARN that we are inputting into text file.
+    """
+    with open('../../adapters/sourceAadapter/table_arn.txt', 'w') as file:
+        file.write(arn)
+    return file.name
+
 
 def main():
     """
@@ -148,16 +158,14 @@ def main():
     logger.info("Creating table with table name '%s'.", table_name)
     sourceA.create_table(table_name)
     logger.info("Table '%s' created.", table_name)
-
     file_name = "sourceA.json"
     logger.info("Adding transactions form '%s' to table '%s'.", file_name, table_name)
     sourceA.add_transaction_data(file_name)
     logger.info("Transactions added to table '%s'.", table_name)
-
     while True:
         msg = input(
-            "Say 'finish' to stop and delete tables, 'scan' to scan both tables,\
-'exit' to stop without deleting tables: ")
+            "Say 'finish' to stop and delete tables,\n    'exit' to stop without deleting tables,\n\
+    'scan' to scan both tables,\n    'arn' put table ARN into a file in sourceAadapter directory: ")
         if msg == "finish":
             logger.info("Deleting table '%s' ...", table_name)
             sourceA.delete_table()
@@ -167,6 +175,11 @@ def main():
             pprint.pprint(sourceA.scan_transactions())
         elif msg == "exit":
             break
+        elif msg == "arn":
+            file_name = create_file(sourceA.table.table_arn)
+            logger.info("File '%s' created in 'src/adapters/sourceAadapter' directory!", file_name)
+
+
 
 
 if __name__ == "__main__":
