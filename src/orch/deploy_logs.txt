@@ -1,9 +1,9 @@
 
-endpoint: GET - https://ngzllifm0h.execute-api.us-east-1.amazonaws.com/dev/orch
+endpoint: GET - https://5sxcsv1ab2.execute-api.us-east-1.amazonaws.com/dev/orch
 functions:
-  orch: orch-dev-orch (7.5 kB)
+  orch: orch-dev-orch (7.8 kB)
 
 Stack Outputs:
-  OrchLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:706797746903:function:orch-dev-orch:78
-  ServiceEndpoint: https://ngzllifm0h.execute-api.us-east-1.amazonaws.com/dev
-  ServerlessDeploymentBucketName: orch-dev-serverlessdeploymentbucket-343dzjhdg0o4
+  OrchLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:706797746903:function:orch-dev-orch:80
+  ServiceEndpoint: https://5sxcsv1ab2.execute-api.us-east-1.amazonaws.com/dev
+  ServerlessDeploymentBucketName: orch-dev-serverlessdeploymentbucket-r9bdvggkzr4v

@@ -7,3 +7,5 @@ sls remove;
 cd ../../orch;
 sls remove;
 : > adapter_urls.txt
+cd ../consumer;
+rm -rf sheets;

@@ -1,9 +1,9 @@
 
-endpoint: GET - https://9niq9yecwa.execute-api.us-east-1.amazonaws.com/dev/sourceA
+endpoint: GET - https://r98gto93b6.execute-api.us-east-1.amazonaws.com/dev/sourceA
 functions:
-  adapt: sourceAadapter-dev-adapt (16 kB)
+  adapt: sourceAadapter-dev-adapt (17 kB)
 
 Stack Outputs:
-  AdaptLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:706797746903:function:sourceAadapter-dev-adapt:52
-  ServiceEndpoint: https://9niq9yecwa.execute-api.us-east-1.amazonaws.com/dev
-  ServerlessDeploymentBucketName: sourceaadapter-dev-serverlessdeploymentbucket-vykguum65fl7
+  AdaptLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:706797746903:function:sourceAadapter-dev-adapt:53
+  ServiceEndpoint: https://r98gto93b6.execute-api.us-east-1.amazonaws.com/dev
+  ServerlessDeploymentBucketName: sourceaadapter-dev-serverlessdeploymentbucket-pa96nhspvyhd
