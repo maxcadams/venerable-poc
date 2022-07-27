@@ -162,8 +162,11 @@ def main():
     logger.info("Creating file...")
     file_name = ""
     with create_file() as file:
-        add_data(get_orch_data(orch_url), file)
-        file_name = file.name
+        try:
+            add_data(get_orch_data(orch_url), file)
+            file_name = file.name
+        except KeyError: # if something wrong with service, deletes trash
+            os.remove(file_name)
 
     # creates new dir and moves file into it
     new_dir = r"sheets"

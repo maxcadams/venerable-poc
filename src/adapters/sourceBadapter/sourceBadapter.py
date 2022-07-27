@@ -228,8 +228,9 @@ def adapt(event, context):
     converts data to python dict,
     then builds domain model.
     """
-
-    obj = s3.Object(os.environ["BUCKET"], "sourceB.csv")
+    with open('bucket_name.txt') as file:
+        bucket_name = file.read()
+    obj = s3.Object(bucket_name, "sourceB.csv")
     # gets data from 'sourceB.csv' and converts it to lists so convert fn
     # can iterate thru it with the csv reader
     contents = obj.get()["Body"].read().decode("utf-8").split("\r\n")

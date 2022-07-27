@@ -39,7 +39,7 @@ provider:
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
           Resource: 
-            -  "arn:aws:dynamodb:us-east-1:706797746903:table/${self:provider.environment.TABLE}"
+            -  "${file(./table_arn.txt)}"
 
 package:
   patterns:

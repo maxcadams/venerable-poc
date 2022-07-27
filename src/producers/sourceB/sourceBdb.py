@@ -8,6 +8,8 @@ Author: Max Adams
 """
 
 import logging
+import os
+import uuid
 
 import boto3
 from botocore.exceptions import ClientError
@@ -78,6 +80,17 @@ class sourceBdb:
             logger.error("Couldn't list items in bucket.")
             raise err
 
+def create_file(bucket_name : str):
+    """
+    Creates bucket_name.txt in sourceBadapter directory that contains
+    the bucket_name for serverless.yml resource field.
+
+    :param bucket_name: Name of bucket that we are inputting into text file.
+    """
+    with open('../../adapters/sourceBadapter/bucket_name.txt', 'w') as file:
+        file.write(bucket_name)
+    return file.name
+
 
 def main():
     """
@@ -88,28 +101,50 @@ def main():
 
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
+    
+        
+
     s3 = boto3.resource("s3")
     sourceB = sourceBdb(s3)
-    bucket_name = "source-b-bucket"
-    file_name = "sourceB.csv"
-    logger.info("Creating bucket '%s' ...", bucket_name)
-    sourceB.create_bucket(bucket_name)
-    logger.info("Created bucket '%s'", bucket_name)
-    logger.info("Putting file '%s' ...", file_name)
-    sourceB.put_item(file_name, file_name)
-    logger.info("File put with key '%s'.", file_name)
+    
+    # if bucket hasn't been configures for sourceBadapter yet
+    if os.stat('../../adapters/sourceBadapter/bucket_name.txt').st_size == 0:
+        #uuid because want unique bucket name
+        bucket_name = "source-b-bucket-" + str(uuid.uuid4())
+        file_name = "sourceB.csv"
+        logger.info("Creating bucket '%s' ...", bucket_name)
+        sourceB.create_bucket(bucket_name)
+        logger.info("Created bucket '%s'", bucket_name)
+        logger.info("Putting file '%s' ...", file_name)
+        sourceB.put_item(file_name, file_name)
+        logger.info("File put with key '%s'.", file_name)
+
+        file_name = create_file(bucket_name)
+        logger.info("File '%s' created in 'src/adapters/sourceBadapter' directory!", file_name)
+    else: #bucket already made
+        with open('../../adapters/sourceBadapter/bucket_name.txt') as file:
+            bucket_name = file.read()
+            logger.info("Bucket '%s' already exists! Using this.")
+            sourceB.Bucket = sourceB.s3.Bucket(bucket_name)
+
     while True:
         prompt = input(
-            "Type 'finish' to delete bucket and end process, \
-type 'list' to list items: "
+            "Type 'finish' to delete bucket and end process, \n      'exit' to stop without deleting tables,\n\
+      'list' to list items: "
         )
         if prompt == "finish":
             logger.info("Deleting bucket '%s'...", bucket_name)
             sourceB.delete_bucket()
             logger.info("Bucket deleted.")
             break
-        if prompt == "list":
+        elif prompt == "list":
             sourceB.list_items()
+        elif prompt == "exit":
+            logger.info("Exiting without deleting bucket...")
+            break
+        
+
+
 
 
 if __name__ == "__main__":

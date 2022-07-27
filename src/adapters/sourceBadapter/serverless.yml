@@ -25,8 +25,8 @@ provider:
   runtime: python3.8
   stage: dev
   region: us-east-1
-  environment: 
-    BUCKET: source-b-bucket
+  # environment: 
+  #   BUCKET: source-b-bucket
   iam:
     role:
       statements:
@@ -36,8 +36,8 @@ provider:
             - s3:PutObject
             - s3:PutObjectTagging
           Resource:
-            -  "arn:aws:s3:::${self:provider.environment.BUCKET}"
-            -  "arn:aws:s3:::${self:provider.environment.BUCKET}/*"
+            -  "arn:aws:s3:::${file(./bucket_name.txt)}"
+            -  "arn:aws:s3:::${file(./bucket_name.txt)}/*"
  
 package:
   patterns:

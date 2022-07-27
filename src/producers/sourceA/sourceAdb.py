@@ -134,7 +134,8 @@ class SourceA:
 
 def create_file(arn : str):
     """
-    Creates table_arn.txt in sourceAadapter directory with table ARN.
+    Creates table_arn.txt in sourceAadapter directory that 
+    contains the table ARN so serverless.yml can use the resource.
 
     :param arn: ARN that we are inputting into text file.
     """
@@ -162,23 +163,28 @@ def main():
     logger.info("Adding transactions form '%s' to table '%s'.", file_name, table_name)
     sourceA.add_transaction_data(file_name)
     logger.info("Transactions added to table '%s'.", table_name)
-    while True:
-        msg = input(
-            "Say 'finish' to stop and delete tables,\n    'exit' to stop without deleting tables,\n\
-    'scan' to scan both tables,\n    'arn' put table ARN into a file in sourceAadapter directory: ")
-        if msg == "finish":
-            logger.info("Deleting table '%s' ...", table_name)
-            sourceA.delete_table()
-            logger.info("Table '%s' deleted.", table_name)
-            break
-        elif msg == "scan":
-            pprint.pprint(sourceA.scan_transactions())
-        elif msg == "exit":
-            break
-        elif msg == "arn":
-            file_name = create_file(sourceA.table.table_arn)
-            logger.info("File '%s' created in 'src/adapters/sourceAadapter' directory!", file_name)
 
+    file_name = create_file(sourceA.table.table_arn)
+    logger.info("File '%s' created in 'src/adapters/sourceAadapter' directory!", file_name)
+
+    while True:
+        try:
+            msg = input(
+            "Type 'finish' to stop and delete tables,\n     'exit' to stop without deleting tables,\n\
+     'scan' to scan both tables: ")
+        
+   
+            if msg == "finish":
+                logger.info("Deleting table '%s' ...", table_name)
+                sourceA.delete_table()
+                logger.info("Table '%s' deleted.", table_name)
+                break
+            elif msg == "scan":
+                pprint.pprint(sourceA.scan_transactions())
+            elif msg == "exit":
+                break
+        except EOFError: #have this because EOF input during bash script execution
+            break
 
 
 
