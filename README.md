@@ -25,7 +25,7 @@ This scripts does the following:
 
 After this, you can go to step 3 run the consumer script with just sourceA data.
 
-2. Standup sourceB and sourceBadapter. Do this in a different terminal window than sourceA. ** Run this only after srcA has been ran.**
+2. Standup sourceB and sourceBadapter. Do this in a different terminal window than sourceA. **Run this only after srcA has been ran.**
 ```
 ./scripts/srcB.sh
 ```
