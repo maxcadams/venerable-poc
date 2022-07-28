@@ -19,9 +19,9 @@ Running the scripts below configures the serverless.yml files to match with the 
 ./scripts/srcA.sh
 ```
 This scripts does the following:
-  1. Gets the arn of the DynamoDb and puts it into a src/adapters/sourceAadapter/table_arn.txt so that the serverless.yml can config correctly.
-  2.  Then once arn is in the file above, it deploys the REST API using Serverless framework and AWS API Gateway and Lambda. The endpoint for sourceAadapter is pulled from the deploy logs and is put into src/orch/adapter_urls.txt 
-  3.  Then runs the prompt for the DynamoDB sourceA. 
+  a. Gets the arn of the DynamoDb and puts it into a src/adapters/sourceAadapter/table_arn.txt so that the serverless.yml can config correctly.
+  b.  Then once arn is in the file above, it deploys the REST API using Serverless framework and AWS API Gateway and Lambda. The endpoint for sourceAadapter is pulled from the deploy logs and is put into src/orch/adapter_urls.txt 
+  c.  Then runs the prompt for the DynamoDB sourceA. 
 
 After this, you can go to step 3 run the consumer script with just sourceA data.
 
