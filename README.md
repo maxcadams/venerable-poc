@@ -11,8 +11,8 @@ Serverless with your AWS account.
 Running the scripts below configures the serverless.yml files to match with the corresponding database ARNs.
 
 ## Running POC
-**Make sure you run the POC in the order stated, or else it will not work. If anything disrupts
-   the deployment of any of the pieces, run the remove script and start over.**
+>**Make sure you run the POC in the order stated, or else it will not work. If anything disrupts
+>   the deployment of any of the pieces, run the remove script and start over.**
 
 1. Standup sourceA and sourceAadapter. 
 ```
