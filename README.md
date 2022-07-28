@@ -29,12 +29,12 @@ After this, you can go to step 3 run the consumer script with just sourceA data.
 ```
 ./scripts/srcB.sh
 ```
-    1. Gets the name of the s3 bucket created for sourceB and puts it into a src/adapters/sourceBadapter/bucket_name.txt
+* Gets the name of the s3 bucket created for sourceB and puts it into a src/adapters/sourceBadapter/bucket_name.txt
      so that the serverless.yml can config correctly.
     Note: We do this because all buckets must be uniquely named across AWS.
-    2. Then once the bucket name is in the file above, it deploys the REST API using Serverless framework
+* Then once the bucket name is in the file above, it deploys the REST API using Serverless framework
      and AWS API Gateway and Lambda. The endpoint for sourceBadapter is pulled from the deploy logs and is put into src/orch/adapter_urls.txt. The orch endpoint url is put into src/consumer/orch_url.txt for the convumer to use.
-    3. Then runs the prompt for sourceB s3 bucket. 
+* Then runs the prompt for sourceB s3 bucket. 
 
 3. Consumer side script. Run this in a third terminal window.
 ```
