@@ -1,6 +1,6 @@
 #!/bin/zsh
 cd src/producers/sourceA;
-python3 sourceAdb.py &
+echo 'exit' | python3 sourceAdb.py 
 cd ../..;
 while [ ! -s adapters/sourceAadapter/table_arn.txt ]
 do 
