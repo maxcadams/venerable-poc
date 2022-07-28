@@ -19,9 +19,9 @@ Running the scripts below configures the serverless.yml files to match with the 
 ./scripts/srcA.sh
 ```
 This scripts does the following:
-a.) Gets the arn of the DynamoDb and puts it into a src/adapters/sourceAadapter/table_arn.txt so that the serverless.yml can config correctly.
-b.) Then once arn is in the file above, it deploys the REST API using Serverless framework and AWS API Gateway and Lambda. The endpoint for sourceAadapter is pulled from the deploy logs and is put into src/orch/adapter_urls.txt 
-c.) Then runs the prompt for the DynamoDB sourceA. 
+1. Gets the arn of the DynamoDb and puts it into a src/adapters/sourceAadapter/table_arn.txt so that the serverless.yml can config correctly.
+2.  Then once arn is in the file above, it deploys the REST API using Serverless framework and AWS API Gateway and Lambda. The endpoint for sourceAadapter is pulled from the deploy logs and is put into src/orch/adapter_urls.txt 
+3.  Then runs the prompt for the DynamoDB sourceA. 
 
 After this, you can go to step 3 run the consumer script with just sourceA data.
 
@@ -29,10 +29,10 @@ After this, you can go to step 3 run the consumer script with just sourceA data.
 ```
 ./scripts/srcB.sh
 ```
-a.) Gets the name of the s3 bucket created for sourceB and puts it into a src/adapters/sourceBadapter/bucket_name.txt so that the serverless.yml can config correctly.
+1. Gets the name of the s3 bucket created for sourceB and puts it into a src/adapters/sourceBadapter/bucket_name.txt so that the serverless.yml can config correctly.
     Note: We do this because all buckets must be uniquely named across AWS.
-b.) Then once the bucket name is in the file above, it deploys the REST API using Serverless framework and AWS API Gateway and Lambda. The endpoint for sourceBadapter is pulled from the deploy logs and is put into src/orch/adapter_urls.txt. The orch endpoint url is put into src/consumer/orch_url.txt for the convumer to use.
-c.) Then runs the prompt for sourceB s3 bucket. 
+2. Then once the bucket name is in the file above, it deploys the REST API using Serverless framework and AWS API Gateway and Lambda. The endpoint for sourceBadapter is pulled from the deploy logs and is put into src/orch/adapter_urls.txt. The orch endpoint url is put into src/consumer/orch_url.txt for the convumer to use.
+3. Then runs the prompt for sourceB s3 bucket. 
 
 3. Consumer side script. Run this in a third terminal window.
 ```
@@ -45,14 +45,14 @@ down in the prompt, and the file is also locally moved to src/consumer/sheets .
 
 ## Clean Up
 
-1.) From the venerable-poc run the script below.
+1. From the venerable-poc run the script below.
 ```
 ./scripts/remove.sh
 
 This script takes down the APIs and clears all of the files that store any url, or resource name.
 
 ```
-2.) Make sure that for both the sourceA and sourceB prompts, make sure you have input 'finish' to both prompts. If you exited one of them without
+2. Make sure that for both the sourceA and sourceB prompts, make sure you have input 'finish' to both prompts. If you exited one of them without
 deleting the resources, you'll have to run the individual scripts in src/producer/source_ and input finish when you run
 ```
 python3 source_db.py
