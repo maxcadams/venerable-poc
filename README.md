@@ -25,10 +25,11 @@ This scripts does the following:
 
 After this, you can go to step 3 run the consumer script with just sourceA data.
 
-2. Standup sourceB and sourceBadapter. Do this in a different terminal window than sourceA. * Run this only after srcA has been ran.**
+2. Standup sourceB and sourceBadapter. Do this in a different terminal window than sourceA. ** Run this only after srcA has been ran.**
 ```
 ./scripts/srcB.sh
 ```
+This script does the following:
 * Gets the name of the s3 bucket created for sourceB and puts it into a src/adapters/sourceBadapter/bucket_name.txt
      so that the serverless.yml can config correctly.
     Note: We do this because all buckets must be uniquely named across AWS.
