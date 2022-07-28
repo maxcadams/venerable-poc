@@ -56,7 +56,7 @@ This script takes down the APIs and clears all of the files that store any url, 
 
 ```
 2. Make sure that for both the sourceA and sourceB prompts, make sure you have input 'finish' to both prompts. If you exited one of them without
-deleting the resources, you'll have to run the individual scripts in src/producer/source_ and input finish when you run
+deleting the resources, you'll have to run the individual scripts in src/producer/source{A or B} and input 'finish' when you run
 ```
-python3 source_db.py
+python3 source{A or B}db.py
 ```
