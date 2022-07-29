@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 cd src/producers/sourceB;
 echo 'exit' | python3 sourceBdb.py

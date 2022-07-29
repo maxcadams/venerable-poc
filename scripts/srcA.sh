@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 cd src/producers/sourceA;
 echo 'exit' | python3 sourceAdb.py 
 cd ../..;

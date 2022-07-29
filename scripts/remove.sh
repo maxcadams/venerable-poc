@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 cd src/adapters/sourceAadapter;
 sls remove;

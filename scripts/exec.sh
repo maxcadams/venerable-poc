@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 execute () {
     sls deploy --verbose| tee deploy_logs.txt;
