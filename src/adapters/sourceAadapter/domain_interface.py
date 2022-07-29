@@ -18,12 +18,12 @@ def build_PaymentInfo(transaction):
     pass
 
 
-def build_VLP(transaction):
+def build_CLP(transaction):
     """
     Builds the CompanyLedgerProcessing section of a PaymentInstruction.
 
     :param transaction: Transaction data being used to build section.
-    :return: VLP section.
+    :return: CLP section.
     """
     pass
 
@@ -50,7 +50,7 @@ def build_PaymentInstruction(transaction):
     pi = {"PaymentInstruction": {}}
     PaymentInstruction = pi["PaymentInstruction"]
     PaymentInstruction["ContextSource"] = build_ContextSource(transaction)
-    PaymentInstruction["CompanyLedgerProcessing"] = build_VLP(transaction)
+    PaymentInstruction["CompanyLedgerProcessing"] = build_CLP(transaction)
     PaymentInstruction["PaymentInfo"] = build_PaymentInfo(transaction)
     PaymentInstruction["PayeeDetails"] = build_PayeeDetails(transaction)
 

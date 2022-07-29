@@ -32,6 +32,8 @@ def lookup_helper(alias, alias_set, lookup_file, dir_path):
 def lookup(alias, alias_set, lookup_file):
     """
     Performs a party look up by alias in alias_set.
+    First checks where this function is being called in src, 
+    sets up path to parties directory, then calls lookup_helper. 
 
     :param alias: Alias of party we are looking up.
     :param alias_set: Alias set in which party resides.

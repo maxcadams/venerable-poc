@@ -94,26 +94,26 @@ def build_PaymentInfo(transaction):
     return PaymentInfo
 
 
-def build_VLP(transaction):
+def build_CLP(transaction):
     """
     Builds the CompanyLedgerProcessing section of a PaymentInstruction.
 
     :param transaction: Transaction data being used to build section.
-    :return: VLP section.
+    :return: CLP section.
     """
-    vlp = {}
-    vlp["PaymentCompanyCostCenter"] = transaction["CostCenter"]
-    vlp["IntendedGeneralLedgerPostingDate"] = transaction["CycleDate"]
-    vlp["PaymentCompanyParty"] = lookup(
+    clp = {}
+    clp["PaymentCompanyCostCenter"] = transaction["CostCenter"]
+    clp["IntendedGeneralLedgerPostingDate"] = transaction["CycleDate"]
+    clp["PaymentCompanyParty"] = lookup(
         alias=transaction["LegalEntity"],
         alias_set="CompanyCompanies",
         lookup_file="OrganizationParty.json",
     )
-    vlp["PaymentCompanyGeneralLedgerAccount"] = lookup(
+    clp["PaymentCompanyGeneralLedgerAccount"] = lookup(
         alias="COMP", alias_set="CompanyAccounts", lookup_file="Account.json"
     )
 
-    return vlp
+    return clp
 
 
 def build_ContextSource(transaction):
@@ -172,7 +172,7 @@ def build_PaymentInstruction(transaction):
     pi = {"PaymentInstruction": {}}
     PaymentInstruction = pi["PaymentInstruction"]
     PaymentInstruction["ContextSource"] = build_ContextSource(transaction)
-    PaymentInstruction["CompanyLedgerProcessing"] = build_VLP(transaction)
+    PaymentInstruction["CompanyLedgerProcessing"] = build_CLP(transaction)
     PaymentInstruction["PaymentInfo"] = build_PaymentInfo(transaction)
     PaymentInstruction["PayeeDetails"] = build_PayeeDetails(transaction)
 
