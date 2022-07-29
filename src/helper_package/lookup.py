@@ -52,5 +52,4 @@ def lookup(alias, alias_set, lookup_file):
         return lookup_helper(alias=alias, alias_set=alias_set, 
                                lookup_file=lookup_file, dir_path=dir_path)
 
-        # ../ if locally ran .. se how we can change this
     
