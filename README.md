@@ -60,3 +60,11 @@ deleting the resources, you'll have to run the individual scripts in src/produce
 ```
 python3 source{A or B}db.py
 ```
+
+## Testing
+
+To test the sourceA and sourceB adapter logic along with the BigBank consumer logic, run the scripts below. 
+```
+./scripts/run_tests.sh
+```
+It is important to note that these tests only test the integrity of the headers of the data, not the data itself. This was done for time purposes, but it is always good practice to robustly test your code.

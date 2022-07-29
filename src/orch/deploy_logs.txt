@@ -1,9 +1,0 @@
-
-endpoint: GET - https://h28i9dpmf7.execute-api.us-east-1.amazonaws.com/dev/orch
-functions:
-  orch: orch-dev-orch (7.8 kB)
-
-Stack Outputs:
-  OrchLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:706797746903:function:orch-dev-orch:93
-  ServiceEndpoint: https://h28i9dpmf7.execute-api.us-east-1.amazonaws.com/dev
-  ServerlessDeploymentBucketName: orch-dev-serverlessdeploymentbucket-va6smt5ut9jx

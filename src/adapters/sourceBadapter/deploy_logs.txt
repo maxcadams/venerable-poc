@@ -1,9 +1,0 @@
-
-endpoint: GET - https://1daryijhk4.execute-api.us-east-1.amazonaws.com/dev/sourceB
-functions:
-  adapt: sourceBadapter-dev-adapt (18 kB)
-
-Stack Outputs:
-  AdaptLambdaFunctionQualifiedArn: arn:aws:lambda:us-east-1:706797746903:function:sourceBadapter-dev-adapt:42
-  ServiceEndpoint: https://1daryijhk4.execute-api.us-east-1.amazonaws.com/dev
-  ServerlessDeploymentBucketName: sourcebadapter-dev-serverlessdeploymentbucket-9zl5335t8qu5
